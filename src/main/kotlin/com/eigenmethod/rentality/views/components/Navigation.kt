@@ -110,7 +110,7 @@ fun Container.menuMain() {
                 }
             }
             link(label = "", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform") {
-                button(text = "Join Whitelist ●", className = "inline-flex items-center border px-5 hover:text-black hover:bg-white rounded-full text-sm h-[40px] font-['Montserrat',Arial,sans-serif] font-bold")
+                button(text = "Join Waitlist ●", className = "inline-flex items-center border px-5 hover:text-black hover:bg-white rounded-full text-sm h-[40px] font-['Montserrat',Arial,sans-serif] font-bold")
             }
             link(label = "", url = "https://demo.rentality.xyz/guest") {
                 button(text = "Try Demo ●", className = "inline-flex items-center border px-5 ml-2.5 hover:text-black hover:bg-white rounded-full text-sm h-[40px] font-['Montserrat',Arial,sans-serif] font-bold")
@@ -191,7 +191,7 @@ fun Container.menuMob() {
                 }
             }
         }
-        link(label = "Join Whitelist", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform", className = "font-['Montserrat',Arial,sans-serif]")
+        link(label = "Join Waitlist", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform", className = "font-['Montserrat',Arial,sans-serif]")
         link(label = "Try Demo", url = "https://demo.rentality.xyz/guest", className = "font-['Montserrat',Arial,sans-serif]")
     }
 }

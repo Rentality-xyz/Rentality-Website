@@ -88,21 +88,21 @@ fun Container.homePage() {
 
     div(className = "mb-[60px] lg:mb-[110px] w-full bg-[url('images/bg_avto_103.png')] bg-cover bg-no-repeat bg-center") {
         div(className="mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
-            whitelistSection()
+            waitlistSection()
             demoSection()
         }
     }
 
 }
 
-private fun Container.whitelistSection() {
+private fun Container.waitlistSection() {
     div(className = "w-full max-lg:pt-4") {
-        id = "whitelist-section"
+        id = "waitlist-section"
         div(className = "flex max-lg:flex-col") {
             h2(className = "min-w-[380px] lg:ml-20 max-lg:text-center max-lg:text-[36px] text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
                 + "Join Our "
                 br(className = "max-lg:hidden")
-                + "Whitelist"
+                + "Waitlist"
             }
             div(className = "min-w-[380px] w-full flex justify-center lg:justify-end") {
                 div(className = "relative") {
@@ -115,7 +115,7 @@ private fun Container.whitelistSection() {
                     }
                     link(className = "absolute max-[550px]:pl-[50px] pl-[80px] max-[450px]:mt-[155px] mt-36", label = "", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform") {
                         button(text = "", className = "inline-flex items-center border-gradient px-5 rounded-[10px] text-sm h-10 font-['Montserrat',Arial,sans-serif] font-bold") {
-                            + "Join Whitelist"
+                            + "Join Waitlist"
                             span(content = "●", className = "text-[#7F5EE7] ml-3 mb-0.5")
                         }
                     }
