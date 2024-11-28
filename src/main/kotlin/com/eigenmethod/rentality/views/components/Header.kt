@@ -84,12 +84,12 @@ private fun Container.headHomePage() {
                 + "powered by WEB 3.0"
             }
             div(className = "flex xl:justify-between mb-8 xl:mb-[112px] mt-8 xl:mt-[100px] max-md:text-[3.9vw] max-md:leading-[6vw] text-[20px] leading-[31px] text-white font-['Montserrat',Arial,sans-serif]") {
-                div(className = "flex") {
-                    image(src = "images/rentality_coin.png", className = "max-md:w-[30%] w-[50px]")
-                    div {
-                        + "This is one of the first projects to link Web 3.0 "
+                div(className = "md:flex items-start") {
+                    image(src = "images/rentality_coin.png", className = "float-left w-[50px]")
+                    div(className = "max-md:text-base") {
+                        + "Transforming car rental by linking real-world assets (RWAs) "
                         br(className = "max-md:hidden")
-                        + "to a successful car rental business."
+                        + "with decentralized physical infrastructure networks (DePINs)."
                     }
                 }
                 div(className = "max-xl:hidden items-center") {
