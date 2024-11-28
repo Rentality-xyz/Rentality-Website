@@ -135,7 +135,7 @@ fun Container.footerCommunicBlock() {
 }
 
 fun Container.footerLegalMatters() {
-    div(className = "z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-1/3 sm:h-full") {
+    div(className = "relative z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-1/3 sm:h-full") {
         link(label = "Legal matters", url = "", className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline") {
             onClick {
                 //делаем через onClick, а не через url = "", чтобы не перегружалась страница
@@ -165,6 +165,33 @@ fun Container.footerLegalMatters() {
             onClick {
                 it.preventDefault()
                 ConduitManager.redirectUrl("${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PRIVACY.value}")
+            }
+        }
+
+        //TrustBox widget - Review Collector
+//        div {
+//            link(label = "", url = "https://www.trustpilot.com/review/rentality.xyz", target = "_blank") {
+//                button(text = "", className= "inline-flex items-center border-gradient px-6 h-10 mt-6 rounded-[10px] text-sm font-['Montserrat',Arial,sans-serif] font-semibold") {
+//                    + "Review us"
+//                    span(content = "★", className = "text-2xl text-[#5CF4E8] ml-3 mr-1")
+//                    + "Trustpilot"
+//                    span(content = "●", className = "text-[#7F5EE7] ml-3 mb-0.5")
+//                }
+//            }
+//        }
+        div(className = "absolute w-[250px] left-[-50px] bottom-4") {
+            div(className = "trustpilot-widget") {
+                setAttribute("data-locale", "en-US")
+                setAttribute("data-template-id", "56278e9abfbbba0bdcd568bc")
+                setAttribute("data-businessunit-id", "67459f54bfd7b10d2666003e")
+                setAttribute("data-style-height", "52px")
+                setAttribute("data-style-width", "100%")
+
+                link(
+                        label = "Trustpilot",
+                        url = "https://www.trustpilot.com/review/rentality.xyz",
+                        target = "_blank"
+                )
             }
         }
     }
