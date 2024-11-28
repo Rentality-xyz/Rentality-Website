@@ -1,6 +1,7 @@
 package com.eigenmethod.rentality.views.components
 
 import com.eigenmethod.rentality.constants.HEADER_LINE_H
+import com.eigenmethod.rentality.css.cssImgCarHostListing
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.Pages
 import io.kvision.core.Container
@@ -11,9 +12,6 @@ import io.kvision.state.bind
 import kotlinx.browser.document
 
 val isActiveMenuMob = ObservableValue(false)
-private const val arrowDown = "⮟"
-private const val arrowRight = "⮞"
-private val arrowDirection = ObservableValue(arrowDown)
 var imgMenu = "images/ic-menu-burge-white-20.svg"
 
 fun Container.menuMain() {
@@ -22,33 +20,15 @@ fun Container.menuMain() {
 
         div(className = "flex items-center text-base justify-center") {
             // About Project dropdown
-            div(className = "relative group").bind(arrowDirection) {
+            div(className = "relative group") {
                 // Main link for dropdown
-                div(content = "About project ${arrowDirection.value}", className = "w-[130px] cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
-                    setEventListener<Div> {
-                        mouseover = { e ->
-                            e.preventDefault()
-                            arrowDirection.value = arrowRight
-                        }
-                        mouseout = { e ->
-                            e.preventDefault()
-                            arrowDirection.value = arrowDown
-                        }
-                    }
+                div(className = "flex w-[136px] cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                    + "About project"
+                    image(src = "images/ic_menu_arrow.svg", className = "ml-1.5")
                 }
 
                 // Dropdown content
                 div(className = "absolute hidden group-hover:block bg-[#1E1E30] rounded-lg shadow-md py-2 px-4 z-10 w-[150px]") {
-                    setEventListener<Div> {
-                        mouseover = { e ->
-                            e.preventDefault()
-                            arrowDirection.value = arrowRight
-                        }
-                        mouseout = { e ->
-                            e.preventDefault()
-                            arrowDirection.value = arrowDown
-                        }
-                    }
                     link(label = "How it work", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
                         onClick {
                             it.preventDefault()
