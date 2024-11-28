@@ -24,7 +24,7 @@ private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 
 fun Container.footer() {
-    footer(className="bg-[url('images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[500px] min-[560px]:h-[450px] lg:h-[290px]") {
+    footer(className="bg-[url('images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[600px] min-[560px]:h-[450px] lg:h-[290px]") {
         image(src = "images/red-generic-sport-ca.png", className="absolute bottom-0 left-0")
 //        div("©2024 by Rentality LLC", className = "absolute bottom-0 left-4 sm:hidden text-white font-['Montserrat',Arial,sans-serif]")
         div(className = "text-white max-w-[$MAX_WITH_CONTENT] mx-auto $CONTAINER_PX flex max-[560px]:flex-col flex-row h-full") {
@@ -37,7 +37,7 @@ fun Container.footer() {
 }
 
 fun Container.footerInfoBlock() {
-    div(className = "z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-auto w-max h-full") {
+    div(className = "z-0 flex flex-col lg:pt-[40px] max-lg:mx-auto lg:ml-auto w-max h-full") {
         image(src = "images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
         div {
             link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
@@ -135,7 +135,7 @@ fun Container.footerCommunicBlock() {
 }
 
 fun Container.footerLegalMatters() {
-    div(className = "relative z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-1/3 sm:h-full") {
+    div(className = "relative z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-2/3 sm:h-full") {
         link(label = "Legal matters", url = "", className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline") {
             onClick {
                 //делаем через onClick, а не через url = "", чтобы не перегружалась страница
