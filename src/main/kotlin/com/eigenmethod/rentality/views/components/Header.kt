@@ -94,10 +94,12 @@ private fun Container.headHomePage() {
                 }
                 div(className = "max-xl:hidden items-center") {
                     buttonToPrototype()
+                    marketplace()
                 }
             }
             div(className = "justify-start my-11 xl:hidden") {
                 buttonToPrototype()
+                marketplace()
             }
         }
 //        image(src = "images/car_for_hero_web3.png", className="absolute top-[27%] min-[0px]:right-[3%] min-[1066px]:right-[-5%] min-[1100px]:right-[-7%] min-[1150px]:right-[-13%] min-[1190px]:right-[-17%] min-[1280px]:right-[-21%] min-[1440px]:right-[-30%] max-w-[70%]")
@@ -143,6 +145,17 @@ private fun Container.buttonToPrototype() {
                 + "Become a Host"
                 span(content = "→", className = "text-[#7F5EE7] ml-3 mb-0.5")
             }
+        }
+    }
+}
+
+private fun Container.marketplace() {
+    div(className = "xl:flex xl:items-center justify-around mt-12") {
+//        link(label = "", url = "") {
+            image(src = "images/marketplace/ic_appstore.png")
+//        }
+        link(label = "", url = "https://play.google.com/store/apps/details?id=xyz.rentality.rentality") {
+            image(src = "images/marketplace/ic_google_play.png", className = "max-xl:mt-4")
         }
     }
 }
