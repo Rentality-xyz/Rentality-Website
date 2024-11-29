@@ -56,6 +56,8 @@ fun Container.homePage() {
     image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-md:hidden absolute top-[1593px] left-0 max-w-[365px]")
     image(src = "images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[2255px] right-0 max-h-[565px]")
     image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[2946px] left-0 max-w-[332px]")
+//    image(src = "images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[3500px] right-0 max-h-[593px]")
+//    image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[4200px] left-0 max-w-[332px]")
     div(className="max-lg:pt-0 pt-[110px] max-lg:pb-[60px] pb-[110px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] bg-[$MAIN_COLOR_BG] text-white") {
         id = "home-page-content"
         image(src = "images/how_it_work_web3.jpg", alt = "How works platform", className = "max-lg:hidden") {
@@ -86,11 +88,15 @@ fun Container.homePage() {
         image(src = "images/roadmap_mob.jpg", alt = "Roadmap of Rentality", className = "pt-2 md:hidden")
     }
 
-    div(className = "mb-[60px] lg:mb-[110px] w-full bg-[url('images/bg_avto_103.png')] bg-cover bg-no-repeat bg-center") {
+    div(className = "w-full bg-[url('images/bg_avto_103.png')] bg-cover bg-no-repeat bg-center") {
         div(className="mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
             waitlistSection()
             demoSection()
         }
+    }
+
+    div(className="mb-[60px] lg:mb-[110px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] bg-[$MAIN_COLOR_BG] text-white") {
+        mediaSection()
     }
 
 }
@@ -223,6 +229,37 @@ private fun Container.builtOnSection() {
             div (className = "mx-auto z-10") {
                 image(src = "images/blockchain/ic_zktoken.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
+            }
+        }
+    }
+}
+
+private fun Container.mediaSection() {
+    div(className = "w-full") {
+        id = "media-section"
+        h2("Featured in Media", className = "md:mb-2 pt-8 md:pt-[85px] text-center text-[40px] lg:text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
+            id = "media"
+        }
+        div(className = "flex flex-col md:justify-start items-center md:gap-60 md:flex-row") {
+            link(className = "max-md:my-4", label = "", url = "https://coinmarketcap.com/community/articles/66eafda9b6494d23c5ca0a65/", target = "_blank") {
+                image(src = "images/media/ic_coinmarketcap.svg", className = "m-auto w-[200px]")
+            }
+            link(className = "max-md:my-4", label = "", url = "https://www.coindesk.com/tech/2024/09/18/protocol-village/?utm_medium=referral&utm_source=rss&utm_campaign=headlines", target = "_blank") {
+                image(src = "images/media/ic_coindesk.svg", className = "m-auto w-[200px]")
+            }
+            link(className = "max-md:my-4", label = "", url = "https://www.xdigitalnews.com/civic-and-rentality-set-new-standard-for-car-rental-security-with-blockchain-based-id-verification/", target = "_blank") {
+                image(src = "images/media/ic_x_digital_news.svg", className = "m-auto w-[100px]")
+            }
+        }
+        div(className = "flex flex-col md:justify-end items-center md:gap-60 md:flex-row mt-2") {
+            link(className = "max-md:mb-4", label = "", url = "https://crypto.news/civic-and-rentality-launch-blockchain-based-car-rental-verification/", target = "_blank") {
+                image(src = "images/media/ic_crypto_news.svg", className = "m-auto w-[200px]")
+            }
+            link(className = "max-md:mb-4", label = "", url = "https://cryptonews.com/news/civic-and-rentality-join-hands-to-verify-drivers-licenses-on-base/", target = "_blank") {
+                image(src = "images/media/ic_cryptonews.svg", className = "m-auto w-[200px]")
+            }
+            link(className = "max-md:mb-4", label = "", url = "https://cryptorank.io/news/feed/ecd87-civic-and-rentality-join-hands-to-verify-drivers-licenses-on-base", target = "_blank") {
+                image(src = "images/media/ic_cryptorank.svg", className = "m-auto w-[200px]")
             }
         }
     }

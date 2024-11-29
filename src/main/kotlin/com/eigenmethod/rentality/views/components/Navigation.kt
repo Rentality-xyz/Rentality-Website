@@ -75,6 +75,13 @@ fun Container.menuMain() {
                     ConduitManager.redirectUrl("#built-on")
                 }
             }
+            link(label = "Media", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                onClick {
+                    it.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    ConduitManager.redirectUrl("#media")
+                }
+            }
             link(label = "Legal matters", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
                 onClick {
                     //делаем через onClick, а не через url = "", чтобы не перегружалась страница
@@ -150,6 +157,16 @@ fun Container.menuMob() {
                     ConduitManager.redirectPage(Pages.HOME)
                     hideMenuMob()
                     ConduitManager.redirectUrl("#built-on")
+                }
+            }
+        }
+        link(label = "Media", url = "#media", className = "font-['Montserrat',Arial,sans-serif]") {
+            onEvent {
+                click = { e ->
+                    e.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    hideMenuMob()
+                    ConduitManager.redirectUrl("#media")
                 }
             }
         }
