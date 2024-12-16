@@ -151,9 +151,9 @@ private fun Container.buttonToPrototype() {
 
 private fun Container.marketplace() {
     div(className = "xl:flex xl:items-center justify-around mt-12") {
-//        link(label = "", url = "") {
-            image(src = "images/marketplace/ic_appstore.png")
-//        }
+        link(label = "", url = "https://apps.apple.com/ua/app/rentality/id6736899320") {
+            image(src = "images/marketplace/ic_appstore.svg", className = "w-[200px]")
+        }
         link(label = "", url = "https://play.google.com/store/apps/details?id=xyz.rentality.rentality") {
             image(src = "images/marketplace/ic_google_play.png", className = "max-xl:mt-4")
         }
