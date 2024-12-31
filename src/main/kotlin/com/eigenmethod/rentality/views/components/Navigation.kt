@@ -1,14 +1,12 @@
 package com.eigenmethod.rentality.views.components
 
 import com.eigenmethod.rentality.constants.HEADER_LINE_H
-import com.eigenmethod.rentality.css.cssImgCarHostListing
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.Pages
 import io.kvision.core.Container
 import io.kvision.core.onEvent
 import io.kvision.html.*
 import io.kvision.state.ObservableValue
-import io.kvision.state.bind
 import kotlinx.browser.document
 
 val isActiveMenuMob = ObservableValue(false)
@@ -203,4 +201,69 @@ private fun hideMenuMob() {
     isActiveMenuMob.value = !isActiveMenuMob.value
 //    val targetText = document.getElementById(section)
 //    targetText?.scrollIntoView(section)
+}
+
+fun Container.menuWagmi2025() {
+    nav(className = "hidden xl:block ml-auto") {
+        id = "menu-wagmi2025"
+        div(className = "flex items-center text-base justify-center") {
+            link(label = "Reserve free shuttle", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                onClick {
+                    it.preventDefault()
+                    ConduitManager.redirectPage(Pages.WAGMI_2025)
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-free-shuttle")
+                }
+            }
+            link(label = "Rentality App", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                onClick {
+                    it.preventDefault()
+                    ConduitManager.redirectPage(Pages.WAGMI_2025)
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#rentality-app")
+                }
+            }
+            link(label = "Become a host", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                onClick {
+                    it.preventDefault()
+                    ConduitManager.redirectPage(Pages.WAGMI_2025)
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                }
+            }
+        }
+    }
+}
+
+fun Container.menuMobWagmi2025() {
+    nav(className = "xl:hidden duration-500 fixed top-[-100%] right-0 w-full bg-[#8222DD] z-[100] flex flex-col items-start space-y-4 pl-6 py-2") {
+        id = "menu-mob-wagmi2025"
+        link(label = "Reserve free shuttle", url = "#partners", className = "font-['Montserrat',Arial,sans-serif]") {
+            onEvent {
+                click = { e ->
+                    e.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    hideMenuMob()
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-free-shuttle")
+                }
+            }
+        }
+        link(label = "Rentality App", url = "#built-on", className = "font-['Montserrat',Arial,sans-serif]") {
+            onEvent {
+                click = { e ->
+                    e.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    hideMenuMob()
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#rentality-app")
+                }
+            }
+        }
+        link(label = "Become a host", url = "#media", className = "font-['Montserrat',Arial,sans-serif]") {
+            onEvent {
+                click = { e ->
+                    e.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    hideMenuMob()
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                }
+            }
+        }
+    }
 }

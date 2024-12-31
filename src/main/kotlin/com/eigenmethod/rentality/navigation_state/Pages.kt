@@ -13,4 +13,5 @@ enum class Pages(val url: String) {
     HISTORY_DETAILS("/historydetails"),
     LEGAL_MATTERS("/legalmatters"),
     TRIP_RULES("/triprules"),
+    WAGMI_2025("/wagmi-2025"),
 }

@@ -18,20 +18,29 @@ import kotlinx.dom.addClass
 fun Container.header() {
     val state = ConduitManager.conduitStore.getState()
 
-    val bgHeader = if (state.page == Pages.HOME) {
-        "md:bg-[url('images/bg_waves.png')] bg-cover bg-no-repeat bg-center bg-scroll h-full"
+    val heightHeader = if (state.page == Pages.WAGMI_2025) {
+        "max-md:h-[840px]"
     } else {
-        "bg-[$MAIN_COLOR_BG]"
+        ""
     }
 
-    header(className = "$bgHeader text-white") {
-        menuMob()
-        if (state.page == Pages.HOME) {
-            div(className = "bg-[url('images/img_header.png')] bg-cover bg-no-repeat bg-center bg-scroll h-full") {
-                mainHeader(state)
+    header(className = "bg-[$MAIN_COLOR_BG] text-white $heightHeader") {
+        when (state.page) {
+            Pages.WAGMI_2025 -> menuMobWagmi2025()
+            else -> menuMob()
+        }
+        when (state.page) {
+            Pages.HOME -> {
+                div(className = "bg-[url('images/img_header.png')] bg-cover bg-no-repeat bg-center bg-scroll h-full") {
+                    mainHeader(state)
+                }
             }
-        } else {
-            mainHeader(state)
+            Pages.WAGMI_2025 -> {
+                div(className = "bg-[url('images/img_header_wagmi_mob.png')] md:bg-[url('images/img_header_wagmi.png')] bg-cover bg-no-repeat bg-center bg-scroll max-md:h-[700px] md:min-h-[1080px]") {
+                    wagmiHeader(state)
+                }
+            }
+            else -> mainHeader(state)
         }
     }
 }
@@ -66,12 +75,50 @@ private fun Container.mainHeader(state: ConduitState) {
                 }
             }
             menuMain()
+
         }
-        if (state.page == Pages.HOME) {
-            headHomePage()
-        } else {
-            breadcrumbs(state)
+        when (state.page) {
+            Pages.HOME -> headHomePage()
+            else -> breadcrumbs(state)
         }
+    }
+}
+
+private fun Container.wagmiHeader(state: ConduitState) {
+    div(className = "mx-auto $CONTAINER_PX flex flex-wrap flex-col md:flex-row max-w-[$MAX_WITH_CONTENT]") {
+        id = "header-content-wagmi"
+        div(className = "flex items-center w-screen h-[$HEADER_LINE_H] xl:h-[140px]").bind(isActiveMenuMob) {
+            id = "header-line-wagmi"
+//            image(src = "images/logo_rentality_wagmi.svg")
+            link(label = "", url = "", className = "max-md:w-[300px]", image = "images/logo_rentality_wagmi.svg") {
+                onClick {
+                    //делаем через onClick, а не через url = "${Pages.HOME.url}", чтобы не перегружалась страница
+                    it.preventDefault()
+                    ConduitManager.redirectPage(Pages.WAGMI_2025)
+                }
+            }
+            //TODO разкоммитеть, это мобильное меню
+//            image(src = imgMenu, className = "xl:hidden ml-auto pr-8") {
+//                onClick {
+//                    it.preventDefault()
+//                    val menuMob = document.getElementById("menu-mob")
+//                    val body = document.getElementById("body")
+//                    imgMenu = if (isActiveMenuMob.value) {
+//                        menuMob?.classList?.remove("top-[$HEADER_LINE_H]")
+//                        body?.classList?.remove("overflow-hidden")
+//                        "images/ic-menu-burge-white-20.svg"
+//                    } else {
+//                        menuMob?.addClass("top-[$HEADER_LINE_H]")
+//                        body?.addClass("overflow-hidden")
+//                        "images/ic-menu-burge-close-white-20.svg"
+//                    }
+//                    isActiveMenuMob.value = !isActiveMenuMob.value
+//                }
+//            }
+            menuWagmi2025()
+
+        }
+        headWagmi2025Page()
     }
 }
 
@@ -106,6 +153,44 @@ private fun Container.headHomePage() {
     }
 }
 
+private fun Container.headWagmi2025Page() {
+    div(className = "mt-2 xl:mt-8 text-white w-full font-['Montserrat',Arial,sans-serif]") {
+        h1(className = "text-[5.8vw] xl:text-[64px] leading-[6.6vw] xl:leading-[77px] font-bold max-md:text-center") {
+            + "Welcome to Rentality,"
+            br()
+            + "the proud gold partner"
+            br()
+            + "of Wagmi Miami 2025!"
+        }
+
+        p(className = "mt-7 text-xl font-medium leading-7 max-md:text-center") {
+            + "We are pioneers in the Web3 car rental industry, and our mission is to"
+            br()
+            + "make your participation in the conference as comfortable as possible"
+        }
+        div(className = "bg-gradient-wagmi-exclusive-offer flex max-md:flex-col mt-[280px] md:mt-[354px] rounded-[20px] pl-[35px] pr-[45px] py-[30px] items-center justify-between") {
+            div(className = "flex max-md:flex-col") {
+                image(src = "images/wagmi_exclusive_offer.svg", className = "max-md:hidden")
+                p(className = "md:ml-7 text-base md:text-xl font-medium md:leading-8 max-md:text-center") {
+                    + "Exclusive offer for conference attendees: use promo code"
+                    br(className = "max-md:hidden")
+                    span(content = "WAGMI2025", className = "text-[#5DF4E8]")
+                    + " to get  "
+                    span(content = "20% off", className = "text-[#5DF4E8]")
+                    + " your first ride. The code is"
+                    br(className = "max-md:hidden")
+                    + "active for 6 months from the start of the conference"
+                }
+            }
+            link(label = "", url = "https://app.rentality.xyz/guest") {
+                button(text = "Rent a Car", className = "flex max-md:mt-6 items-center justify-center bg-white rounded-full w-[352px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold") {
+                    image(src = "images/maki_car.svg", className = "ml-4")
+                }
+            }
+        }
+    }
+}
+
 private fun Container.breadcrumbs(state: ConduitState) {
     val title = if (state.userStatus == UserStatus.GUEST) "GUEST" else "HOST"
     val selectedPage = when (state.page) {
@@ -121,7 +206,7 @@ private fun Container.breadcrumbs(state: ConduitState) {
         else -> ""
     }
     val marginLeftPerc = if (state.userStatus == UserStatus.GUEST) "25%" else "26.9%"
-    if (!(state.page.url.contains(Pages.LEGAL_MATTERS.url) || state.page.url.contains(Pages.TRIP_RULES.url))) {
+    if (!(state.page.url.contains(Pages.LEGAL_MATTERS.url) || state.page.url.contains(Pages.TRIP_RULES.url) || state.page.url.contains(Pages.WAGMI_2025.url))) {
         div(className = "flex bg-[url('images/bg_breadcrumbs.png')] bg-cover bg-center bg-no-repeat h-[200px] mt-[30px] mb-[50px] container mx-auto max-w-[$MAX_WITH_CONTENT] rounded-2xl border-transparent border-solid") {
             id = "breadcrumbs-content"
             div {

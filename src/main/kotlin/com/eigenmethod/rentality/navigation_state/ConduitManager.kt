@@ -127,4 +127,9 @@ object ConduitManager : CoroutineScope by CoroutineScope(Dispatchers.Default + S
         val state = conduitStore.getState().copy(page = Pages.TRIP_RULES)
         conduitStore.dispatch(ConduitAction.SetConduitState(state))
     }
+
+    fun wagmi2025Page() {
+        val state = conduitStore.getState().copy(page = Pages.WAGMI_2025)
+        conduitStore.dispatch(ConduitAction.SetConduitState(state))
+    }
 }

@@ -18,12 +18,19 @@ import io.kvision.Application
 import io.kvision.CoreModule
 import io.kvision.html.main
 import io.kvision.module
+import io.kvision.pace.Pace
+import io.kvision.pace.PaceOptions
 import io.kvision.panel.root
 import io.kvision.startApplication
 import io.kvision.state.bind
+import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.asCoroutineDispatcher
+
+val AppScope = CoroutineScope(window.asCoroutineDispatcher()) //TODO создается один раз на всю программу, а можно и в каждом классе создавать свой
+
 
 class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default + SupervisorJob()) {
 
@@ -32,8 +39,8 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default 
     }
 
     override fun start() {
-//        Pace.init(io.kvision.require("css/pace-bounce.css"))
-//        Pace.setOptions(PaceOptions(manual = true))
+        Pace.init(io.kvision.require("css/pace-bounce.css"))
+        Pace.setOptions(PaceOptions(manual = true))
         ConduitManager.initialize(EthProvider)
 
         root("kvapp") {
@@ -82,8 +89,13 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default 
                     Pages.TRIP_RULES -> {
                         tripRulesPage(state)
                     }
+                    Pages.WAGMI_2025 -> {
+                        wagmi2025Page()
+                    }
                 }
-                footer()
+                if (state.page != Pages.WAGMI_2025) {
+                    footer()
+                }
             }
         }
     }

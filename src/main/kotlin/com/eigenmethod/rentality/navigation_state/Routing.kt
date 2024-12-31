@@ -84,6 +84,12 @@ fun Navigo.initialize(): Navigo {
                         ConduitManager.tripRulesPage()
                     }
             )
+            .on(
+                    Pages.WAGMI_2025.url,
+                    { _ ->
+                        ConduitManager.wagmi2025Page()
+                    }
+            )
 
 
 }
