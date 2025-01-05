@@ -51,46 +51,59 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default 
                     Pages.HOME -> {
 //                        console.log("App View Home")
                         homePage()
+                        Pace.stop()
                     }
                     Pages.CAR_INFO -> {
 //                        console.log("App View HOST_ADD_CAR")
                         carInfoPage(state)
+                        Pace.stop()
                     }
                     Pages.HOST_CAR_LISTING -> {
 //                        console.log("App View HOST_CAR_LISTING")
                         hostCarListingPage(state)
+                        Pace.stop()
                     }
                     Pages.HOST_ADD_CAR -> {
 //                        console.log("App View HOST_ADD_CAR")
                         hostAddCarPage(state)
+                        Pace.stop()
                     }
                     Pages.HOST_HISTORY -> {
                         hostHistoryPage(state)
+                        Pace.stop()
                     }
                     Pages.HOST_BOOKED -> {
                         hostBookedPage(state)
+                        Pace.stop()
                     }
                     Pages.GUEST_SEARCH -> {
 //                        console.log("App View GUEST_SEARCH")
                         guestSearchPage(state)
+                        Pace.stop()
                     }
                     Pages.GUEST_HISTORY -> {
                         guestHistoryPage(state)
+                        Pace.stop()
                     }
                     Pages.GUEST_BOOKED -> {
                         guestBookedPage(state)
+                        Pace.stop()
                     }
                     Pages.HISTORY_DETAILS -> {
                         historyDetailsPage(state)
+                        Pace.stop()
                     }
                     Pages.LEGAL_MATTERS -> {
                         legalMattersPage(state)
+                        Pace.stop()
                     }
                     Pages.TRIP_RULES -> {
                         tripRulesPage(state)
+                        Pace.stop()
                     }
                     Pages.WAGMI_2025 -> {
                         wagmi2025Page()
+                        Pace.stop()
                     }
                 }
                 if (state.page != Pages.WAGMI_2025) {

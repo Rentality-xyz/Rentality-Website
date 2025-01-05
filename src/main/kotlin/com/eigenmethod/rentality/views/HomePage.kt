@@ -33,10 +33,10 @@ fun Container.homePage() {
     }
 
     div {
-        div(className = "fixed flex justify-center items-center bottom-20 right-10 md:right-20 z-[99] w-[60px] h-[60px] cursor-pointer bg-[url('images/ellipseUpBtn.png')] bg-cover bg-no-repeat bg-center").bind(isVisibleUpBtn) {
+        div(className = "fixed flex justify-center items-center bottom-20 right-10 md:right-20 z-[99] w-[60px] h-[60px] cursor-pointer bg-[url('/images/ellipseUpBtn.png')] bg-cover bg-no-repeat bg-center").bind(isVisibleUpBtn) {
             id = "up-btn"
             visible = isVisibleUpBtn.value
-            image(src = "images/arrUpBtn.png", className = "w-[40px] h-[28px]")
+            image(src = "/images/arrUpBtn.png", className = "w-[40px] h-[28px]")
         }
         onClick { ev ->
             ev.preventDefault()
@@ -52,43 +52,43 @@ fun Container.homePage() {
         builtOnSection()
     }
 
-    image(src = "images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[850px] right-0 max-h-[593px]")
-    image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-md:hidden absolute top-[1593px] left-0 max-w-[365px]")
-    image(src = "images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[2255px] right-0 max-h-[565px]")
-    image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[2946px] left-0 max-w-[332px]")
-//    image(src = "images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[3500px] right-0 max-h-[593px]")
-//    image(src = "images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[4200px] left-0 max-w-[332px]")
+    image(src = "/images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[850px] right-0 max-h-[593px]")
+    image(src = "/images/bg_arrows_from_logo_zoya.png", className = "max-md:hidden absolute top-[1593px] left-0 max-w-[365px]")
+    image(src = "/images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[2255px] right-0 max-h-[565px]")
+    image(src = "/images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[2946px] left-0 max-w-[332px]")
+//    image(src = "/images/bg_logo_zoya.png", className = "max-md:hidden absolute top-[3500px] right-0 max-h-[593px]")
+//    image(src = "/images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[4200px] left-0 max-w-[332px]")
     div(className="max-lg:pt-0 pt-[110px] max-lg:pb-[60px] pb-[110px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] bg-[$MAIN_COLOR_BG] text-white") {
         id = "home-page-content"
-        image(src = "images/how_it_work_web3.jpg", alt = "How works platform", className = "max-lg:hidden") {
+        image(src = "/images/how_it_work_web3.jpg", alt = "How works platform", className = "max-lg:hidden") {
             id = "how_it_work"
         }
-        image(src = "images/how_it_work_web3_mob.jpg", alt = "How works platform", className = "pt-14 lg:hidden") {
+        image(src = "/images/how_it_work_web3_mob.jpg", alt = "How works platform", className = "pt-14 lg:hidden") {
             id = "how_it_work_mob"
         }
 
         div("Rental process", className = "md:hidden pt-8 text-center text-[36px] font-['Montserrat',Arial,sans-serif] font-bold") {
             id = "rental_process_mob"
         }
-        image(src = "images/rental_process.jpg", alt = "Car rental process of Rentality", className = "pt-[80px] max-md:hidden") {
+        image(src = "/images/rental_process.jpg", alt = "Car rental process of Rentality", className = "pt-[80px] max-md:hidden") {
             id = "rental_process"
         }
-        image(src = "images/rental_process_mob.jpg", alt = "Car rental process of Rentality", className = "pt-2 md:hidden")
+        image(src = "/images/rental_process_mob.jpg", alt = "Car rental process of Rentality", className = "pt-2 md:hidden")
 
         h2("Solution", className = "max-md:pt-8 pt-[80px] max-md:text-center max-md:text-[36px] text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
             id = "solution"
         }
-        image(src = "images/solution_web3.jpg", alt = "Solution of Rentality", className = "pt-[10px] max-md:hidden")
-        image(src = "images/solution_web3_mob.jpg", alt = "Solution of Rentality", className = "pt-2 md:hidden")
+        image(src = "/images/solution_web3.jpg", alt = "Solution of Rentality", className = "pt-[10px] max-md:hidden")
+        image(src = "/images/solution_web3_mob.jpg", alt = "Solution of Rentality", className = "pt-2 md:hidden")
 
         h2("Roadmap", className = "max-md:pt-8 pt-[110px] max-md:text-center max-md:text-[36px] text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
             id = "roadmap"
         }
-        image(src = "images/roadmap.jpg", alt = "Roadmap of Rentality", className = "max-md:hidden")
-        image(src = "images/roadmap_mob.jpg", alt = "Roadmap of Rentality", className = "pt-2 md:hidden")
+        image(src = "/images/roadmap.jpg", alt = "Roadmap of Rentality", className = "max-md:hidden")
+        image(src = "/images/roadmap_mob.jpg", alt = "Roadmap of Rentality", className = "pt-2 md:hidden")
     }
 
-    div(className = "w-full bg-[url('images/bg_avto_103.png')] bg-cover bg-no-repeat bg-center") {
+    div(className = "w-full bg-[url('/images/bg_avto_103.png')] bg-cover bg-no-repeat bg-center") {
         div(className="mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
             waitlistSection()
             demoSection()
@@ -125,7 +125,7 @@ private fun Container.waitlistSection() {
                             span(content = "●", className = "text-[#7F5EE7] ml-3 mb-0.5")
                         }
                     }
-                    image(src = "images/rectangle_midnight_purple.png", className = "w-[580px] h-[240px] lg:mr-12")
+                    image(src = "/images/rectangle_midnight_purple.png", className = "w-[580px] h-[240px] lg:mr-12")
                 }
             }
         }
@@ -157,7 +157,7 @@ private fun Container.demoSection() {
                             span(content = "●", className = "text-[#7F5EE7] ml-3 mb-0.5")
                         }
                     }
-                    image(src = "images/rectangle_midnight_purple.png", className = "w-[580px] h-[240px] lg:mr-12")
+                    image(src = "/images/rectangle_midnight_purple.png", className = "w-[580px] h-[240px] lg:mr-12")
                 }
             }
         }
@@ -172,16 +172,16 @@ private fun Container.partnersSection() {
         }
         div(className = "flex flex-col md:flex-row") {
             div (className = "max-md:mb-4 mx-auto") {
-                image(src = "images/partners/GoogleCloudOfficialLogo.svg", className = "m-auto mt-6 h-[28px] lg:h-[38px]")
+                image(src = "/images/partners/GoogleCloudOfficialLogo.svg", className = "m-auto mt-6 h-[28px] lg:h-[38px]")
             }
             div (className = "max-md:mb-4 mx-auto") {
-                image(src = "images/partners/Eigenmethod-logo-dark-bg.png", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
+                image(src = "/images/partners/Eigenmethod-logo-dark-bg.png", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
             }
             div (className = "max-md:mb-4 mx-auto") {
-                image(src = "images/partners/civic-logo-blue.svg", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
+                image(src = "/images/partners/civic-logo-blue.svg", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
             }
             div (className = "max-md:mb-4 mx-auto") {
-                image(src = "images/partners/ic_zazmic.png", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
+                image(src = "/images/partners/ic_zazmic.png", className = "m-auto mt-2 h-[48px] lg:h-[58px]")
             }
         }
     }
@@ -195,39 +195,39 @@ private fun Container.builtOnSection() {
         }
         div(className = "flex") {
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_base.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_base.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_ethereum.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_ethereum.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_polygon.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_polygon.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_linea.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_linea.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_arbitrum.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_arbitrum.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_avalanche.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_avalanche.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_op.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_op.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_opbnb.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_opbnb.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
             div (className = "mx-auto z-10") {
-                image(src = "images/blockchain/ic_zktoken.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                image(src = "/images/blockchain/ic_zktoken.svg", className = "m-auto h-[38px] lg:h-[68px]")
 
             }
         }
@@ -242,24 +242,24 @@ private fun Container.mediaSection() {
         }
         div(className = "flex flex-col md:justify-start items-center md:gap-60 md:flex-row") {
             link(className = "max-md:my-4", label = "", url = "https://coinmarketcap.com/community/articles/66eafda9b6494d23c5ca0a65/", target = "_blank") {
-                image(src = "images/media/ic_coinmarketcap.svg", className = "m-auto w-[200px]")
+                image(src = "/images/media/ic_coinmarketcap.svg", className = "m-auto w-[200px]")
             }
             link(className = "max-md:my-4", label = "", url = "https://www.coindesk.com/tech/2024/09/18/protocol-village/?utm_medium=referral&utm_source=rss&utm_campaign=headlines", target = "_blank") {
-                image(src = "images/media/ic_coindesk.svg", className = "m-auto w-[200px]")
+                image(src = "/images/media/ic_coindesk.svg", className = "m-auto w-[200px]")
             }
             link(className = "max-md:my-4", label = "", url = "https://www.xdigitalnews.com/civic-and-rentality-set-new-standard-for-car-rental-security-with-blockchain-based-id-verification/", target = "_blank") {
-                image(src = "images/media/ic_x_digital_news.svg", className = "m-auto w-[100px]")
+                image(src = "/images/media/ic_x_digital_news.svg", className = "m-auto w-[100px]")
             }
         }
         div(className = "flex flex-col md:justify-end items-center md:gap-60 md:flex-row mt-2") {
             link(className = "max-md:mb-4", label = "", url = "https://crypto.news/civic-and-rentality-launch-blockchain-based-car-rental-verification/", target = "_blank") {
-                image(src = "images/media/ic_crypto_news.svg", className = "m-auto w-[200px]")
+                image(src = "/images/media/ic_crypto_news.svg", className = "m-auto w-[200px]")
             }
             link(className = "max-md:mb-4", label = "", url = "https://cryptonews.com/news/civic-and-rentality-join-hands-to-verify-drivers-licenses-on-base/", target = "_blank") {
-                image(src = "images/media/ic_cryptonews.svg", className = "m-auto w-[200px]")
+                image(src = "/images/media/ic_cryptonews.svg", className = "m-auto w-[200px]")
             }
             link(className = "max-md:mb-4", label = "", url = "https://cryptorank.io/news/feed/ecd87-civic-and-rentality-join-hands-to-verify-drivers-licenses-on-base", target = "_blank") {
-                image(src = "images/media/ic_cryptorank.svg", className = "m-auto w-[200px]")
+                image(src = "/images/media/ic_cryptorank.svg", className = "m-auto w-[200px]")
             }
         }
     }

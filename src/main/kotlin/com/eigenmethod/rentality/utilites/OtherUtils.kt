@@ -21,3 +21,9 @@ fun <T : Any> tryOrNull(messageForLog: String? = null, tryFunc: () -> T): T? {
 inline fun <reified T> T?.orIfNull(input: () -> T): T {
     return this ?: input()
 }
+
+// Проверка корректности введённой даты Wagmi
+fun isValidShuttleDate(date: String): Boolean {
+    val validDates = setOf("2025-01-22", "2025-01-23", "2025-01-24", "2025-01-25")
+    return date in validDates
+}

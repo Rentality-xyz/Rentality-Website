@@ -4,13 +4,15 @@ import com.eigenmethod.rentality.constants.HEADER_LINE_H
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.Pages
 import io.kvision.core.Container
+import io.kvision.core.onClick
 import io.kvision.core.onEvent
 import io.kvision.html.*
+import io.kvision.pace.Pace
 import io.kvision.state.ObservableValue
 import kotlinx.browser.document
 
 val isActiveMenuMob = ObservableValue(false)
-var imgMenu = "images/ic-menu-burge-white-20.svg"
+var imgMenu = "/images/ic-menu-burge-white-20.svg"
 
 fun Container.menuMain() {
     nav(className = "hidden xl:block ml-auto") {
@@ -32,6 +34,7 @@ fun Container.menuMain() {
                             it.preventDefault()
                             ConduitManager.redirectPage(Pages.HOME)
                             ConduitManager.redirectUrl("#how_it_work")
+                            Pace.stop()
                         }
                     }
                     link(label = "Rental process", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -39,6 +42,7 @@ fun Container.menuMain() {
                             it.preventDefault()
                             ConduitManager.redirectPage(Pages.HOME)
                             ConduitManager.redirectUrl("#rental_process")
+                            Pace.stop()
                         }
                     }
                     link(label = "Solution", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -46,6 +50,7 @@ fun Container.menuMain() {
                             it.preventDefault()
                             ConduitManager.redirectPage(Pages.HOME)
                             ConduitManager.redirectUrl("#solution")
+                            Pace.stop()
                         }
                     }
                     link(label = "Roadmap", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -53,6 +58,7 @@ fun Container.menuMain() {
                             it.preventDefault()
                             ConduitManager.redirectPage(Pages.HOME)
                             ConduitManager.redirectUrl("#roadmap")
+                            Pace.stop()
                         }
                     }
                 }
@@ -64,6 +70,7 @@ fun Container.menuMain() {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
                     ConduitManager.redirectUrl("#partners")
+                    Pace.stop()
                 }
             }
             link(label = "Built on", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -71,6 +78,7 @@ fun Container.menuMain() {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
                     ConduitManager.redirectUrl("#built-on")
+                    Pace.stop()
                 }
             }
             link(label = "Media", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -78,6 +86,7 @@ fun Container.menuMain() {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
                     ConduitManager.redirectUrl("#media")
+                    Pace.stop()
                 }
             }
             link(label = "Legal matters", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -85,6 +94,7 @@ fun Container.menuMain() {
                     //делаем через onClick, а не через url = "", чтобы не перегружалась страница
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.LEGAL_MATTERS)
+                    Pace.stop()
                 }
             }
             link(label = "Trip rules", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -92,6 +102,7 @@ fun Container.menuMain() {
                     //делаем через onClick, а не через url = "", чтобы не перегружалась страница
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.TRIP_RULES)
+                    Pace.stop()
                 }
             }
             link(label = "", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform") {
@@ -113,6 +124,7 @@ fun Container.menuMob() {
                 it.preventDefault()
                 hideMenuMob()
                 ConduitManager.redirectUrl("#how_it_work_mob")
+                Pace.stop()
             }
         }
         link(label = "Rental process", url = "#rental_process_mob", className = "font-['Montserrat',Arial,sans-serif]") {
@@ -120,6 +132,7 @@ fun Container.menuMob() {
                 it.preventDefault()
                 hideMenuMob()
                 ConduitManager.redirectUrl("#rental_process_mob")
+                Pace.stop()
             }
         }
         link(label = "Solution", url = "#solution", className = "font-['Montserrat',Arial,sans-serif]") {
@@ -127,6 +140,7 @@ fun Container.menuMob() {
                 it.preventDefault()
                 hideMenuMob()
                 ConduitManager.redirectUrl("#solution")
+                Pace.stop()
             }
         }
         link(label = "Roadmap", url = "#roadmap", className = "font-['Montserrat',Arial,sans-serif]") {
@@ -135,6 +149,7 @@ fun Container.menuMob() {
                     e.preventDefault()
                     hideMenuMob()
                     ConduitManager.redirectUrl("#roadmap")
+                    Pace.stop()
                 }
             }
         }
@@ -145,6 +160,7 @@ fun Container.menuMob() {
                     ConduitManager.redirectPage(Pages.HOME)
                     hideMenuMob()
                     ConduitManager.redirectUrl("#partners")
+                    Pace.stop()
                 }
             }
         }
@@ -155,6 +171,7 @@ fun Container.menuMob() {
                     ConduitManager.redirectPage(Pages.HOME)
                     hideMenuMob()
                     ConduitManager.redirectUrl("#built-on")
+                    Pace.stop()
                 }
             }
         }
@@ -165,6 +182,7 @@ fun Container.menuMob() {
                     ConduitManager.redirectPage(Pages.HOME)
                     hideMenuMob()
                     ConduitManager.redirectUrl("#media")
+                    Pace.stop()
                 }
             }
         }
@@ -174,6 +192,7 @@ fun Container.menuMob() {
                     e.preventDefault()
                     hideMenuMob()
                     ConduitManager.redirectPage(Pages.LEGAL_MATTERS)
+                    Pace.stop()
                 }
             }
         }
@@ -183,6 +202,7 @@ fun Container.menuMob() {
                     e.preventDefault()
                     hideMenuMob()
                     ConduitManager.redirectPage(Pages.TRIP_RULES)
+                    Pace.stop()
                 }
             }
         }
@@ -197,7 +217,7 @@ private fun hideMenuMob() {
     val body = document.getElementById("body")
     body?.classList?.remove("overflow-hidden")
     body?.classList?.remove("overflow-hidden")
-    imgMenu = "images/ic-menu-burge-white-20.svg"
+    imgMenu = "/images/ic-menu-burge-white-20.svg"
     isActiveMenuMob.value = !isActiveMenuMob.value
 //    val targetText = document.getElementById(section)
 //    targetText?.scrollIntoView(section)
@@ -211,7 +231,8 @@ fun Container.menuWagmi2025() {
                 onClick {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
-                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-free-shuttle")
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-shuttle")
+                    Pace.stop()
                 }
             }
             link(label = "Rentality App", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -219,6 +240,7 @@ fun Container.menuWagmi2025() {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
                     ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#rentality-app")
+                    Pace.stop()
                 }
             }
             link(label = "Become a host", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
@@ -226,6 +248,7 @@ fun Container.menuWagmi2025() {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
                     ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                    Pace.stop()
                 }
             }
         }
@@ -233,37 +256,66 @@ fun Container.menuWagmi2025() {
 }
 
 fun Container.menuMobWagmi2025() {
-    nav(className = "xl:hidden duration-500 fixed top-[-100%] right-0 w-full bg-[#8222DD] z-[100] flex flex-col items-start space-y-4 pl-6 py-2") {
+    nav(className = "xl:hidden duration-500 fixed top-[-100%] right-0 w-full bg-white z-[100] flex flex-col items-center text-black space-y-4 px-6 py-6 font-medium") {
         id = "menu-mob-wagmi2025"
-        link(label = "Reserve free shuttle", url = "#partners", className = "font-['Montserrat',Arial,sans-serif]") {
-            onEvent {
-                click = { e ->
-                    e.preventDefault()
-                    ConduitManager.redirectPage(Pages.HOME)
-                    hideMenuMob()
-                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-free-shuttle")
+        div(className = "flex items-center justify-between w-full border-b border-[#EFEFEF] pb-6") {
+            image(src = "/images/logo_rentality_wagmi_mob.svg", className = "w-[300px]")
+            image(src = "/images/ic_close.svg") {
+                onClick {
+                    it.preventDefault()
+                    val menuMob = document.getElementById("menu-mob-wagmi2025")
+                    val body = document.getElementById("body")
+                    menuMob?.classList?.remove("top-[0px]")
+                    body?.classList?.remove("overflow-hidden")
+                    imgMenu = "/images/ic-menu-burge-white-20.svg"
+                    isActiveMenuMob.value = false
                 }
             }
         }
-        link(label = "Rentality App", url = "#built-on", className = "font-['Montserrat',Arial,sans-serif]") {
+        link(label = "Reserve free shuttle", url = "#reserve-shuttle", className = "font-['Montserrat',Arial,sans-serif]") {
             onEvent {
                 click = { e ->
                     e.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
-                    hideMenuMob()
+                    hideMenuMobWagmi()
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#reserve-shuttle")
+                    Pace.stop()
+                }
+            }
+        }
+        link(label = "Rentality App", url = "#rentality-app", className = "font-['Montserrat',Arial,sans-serif]") {
+            onEvent {
+                click = { e ->
+                    e.preventDefault()
+                    ConduitManager.redirectPage(Pages.HOME)
+                    hideMenuMobWagmi()
                     ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#rentality-app")
+                    Pace.stop()
                 }
             }
         }
-        link(label = "Become a host", url = "#media", className = "font-['Montserrat',Arial,sans-serif]") {
+        link(label = "Become a host", url = "#become-a-host", className = "font-['Montserrat',Arial,sans-serif]") {
             onEvent {
                 click = { e ->
                     e.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
-                    hideMenuMob()
+                    hideMenuMobWagmi()
                     ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                    Pace.stop()
                 }
             }
         }
     }
+}
+
+private fun hideMenuMobWagmi() {
+    val menuMob = document.getElementById("menu-mob-wagmi2025")
+    menuMob?.classList?.remove("top-[0px]")
+    val body = document.getElementById("body")
+    body?.classList?.remove("overflow-hidden")
+    body?.classList?.remove("overflow-hidden")
+    imgMenu = "/images/ic-menu-burge-white-20.svg"
+    isActiveMenuMob.value = !isActiveMenuMob.value
+//    val targetText = document.getElementById(section)
+//    targetText?.scrollIntoView(section)
 }
