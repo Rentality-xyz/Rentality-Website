@@ -521,7 +521,7 @@ private fun Container.showDialogReserveShuttle() {
                     }
                 }
             }
-            p("Thank you! Your shuttle has been reserved", className = "text-[28px] md:text-5xl leading-[33px] md:leading-[58px] font-bold mb-4 md:mb-8")
+            p("Thank you! We received your shuttle request!", className = "text-[28px] md:text-5xl leading-[33px] md:leading-[58px] font-bold mb-4 md:mb-8")
             p("You will receive an email confirmation shortly.", className = "text-base md:text-xl font-medium mb-6 md:mb-10 leading-[22px] md:leading-7")
             div(className = "flex flex-col md:grid md:grid-cols-2 md:gap-12") {
                 button(text = "", className = "max-md:mb-4 py-2 flex items-center justify-center rounded-full text-base md:text-xl font-semibold") {
