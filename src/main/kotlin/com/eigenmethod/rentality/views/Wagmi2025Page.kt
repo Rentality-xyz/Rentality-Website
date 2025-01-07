@@ -24,15 +24,21 @@ import kotlinx.browser.window
 import org.w3c.dom.HTMLInputElement
 
 private val isVisibleUpBtn = ObservableValue(false)
-private var isEmailError = ObservableValue(false)
-private var isDateError = ObservableValue(false)
+private var isInputMainError = ObservableValue(false)
+private var isInputFirstNameError = ObservableValue(false)
+private var isInputLastNameError = ObservableValue(false)
+private var isInputCompanyNameError = ObservableValue(false)
+private var isInputAddressError = ObservableValue(false)
+private var isInputEmailError = ObservableValue(false)
+private var isInputPhoneError = ObservableValue(false)
+private var isInputDateError = ObservableValue(false)
 
 private const val cssInput = "pl-5 pr-5 border-b border-[#EFEFEF] bg-white h-[50px] text-base w-full"
 
 private var formInputFirstName: String = ""
 private var formInputLastName: String = ""
 private var formInputCompanyName: String = ""
-private var formInputHotelName: String = ""
+private var formInputAddressName: String = ""
 private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 private var formInputDateShuttle: String = ""
@@ -77,7 +83,7 @@ fun Container.wagmi2025Page() {
         div(className = "mt-20 md:mt-44 text-[28px] md:text-[64px] md:leading-[76px] w-full text-center font-bold") {
             + "Why List Your "
             br(className = "max-md:hidden")
-            + "Caron Rentality?"
+            + "Car on Rentality?"
         }
     }
 
@@ -136,23 +142,29 @@ private fun Container.sectionReserveShuttle() {
             div {
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
-                        label("*First Name", forId = "wagmi_first_name")
+                        div().bind(isInputFirstNameError) {
+                            label("*First Name", forId = "wagmi_first_name", className = if (isInputFirstNameError.value) "text-red-600" else "")
+                        }
                         textInput(type = InputType.TEXT, className = cssInput) {
                             id = "wagmi_first_name"
                             placeholder = "First Name"
                             onInput {
                                 it.preventDefault()
+                                isInputFirstNameError.value = false
                                 formInputFirstName = this.value.orEmpty()
                             }
                         }
                     }
                     div {
-                        label("*Last name", forId = "wagmi_last_name")
+                        div().bind(isInputLastNameError) {
+                            label("*Last Name", forId = "wagmi_last_name", className = if (isInputLastNameError.value) "text-red-600" else "")
+                        }
                         textInput(type = InputType.TEXT, className = cssInput) {
                             id = "wagmi_last_name"
-                            placeholder = "Last name"
+                            placeholder = "Last Name"
                             onInput {
                                 it.preventDefault()
+                                isInputLastNameError.value = false
                                 formInputLastName = this.value.orEmpty()
                             }
                         }
@@ -161,24 +173,30 @@ private fun Container.sectionReserveShuttle() {
 
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
-                        label("*Company Name", forId = "wagmi_company_name")
+                        div().bind(isInputCompanyNameError) {
+                            label("*Company Name", forId = "wagmi_company_name", className = if (isInputCompanyNameError.value) "text-red-600" else "")
+                        }
                         textInput(type = InputType.TEXT, className = cssInput) {
                             id = "wagmi_company_name"
                             placeholder = "Enter your Company"
                             onInput {
                                 it.preventDefault()
+                                isInputCompanyNameError.value = false
                                 formInputCompanyName = this.value.orEmpty()
                             }
                         }
                     }
                     div {
-                        label("*Address", forId = "wagmi_hotel")
+                        div().bind(isInputAddressError) {
+                            label("*Address", forId = "wagmi_address", className = if (isInputAddressError.value) "text-red-600" else "")
+                        }
                         textInput(type = InputType.TEXT, className = cssInput) {
-                            id = "wagmi_hotel"
-                            placeholder = "Enter your address"
+                            id = "wagmi_address"
+                            placeholder = "Enter your Address"
                             onInput {
                                 it.preventDefault()
-                                formInputHotelName = this.value.orEmpty()
+                                isInputAddressError.value = false
+                                formInputAddressName = this.value.orEmpty()
                             }
                         }
                     }
@@ -186,8 +204,8 @@ private fun Container.sectionReserveShuttle() {
 
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
-                        div().bind(isEmailError) {
-                            label("*E-mail", forId = "wagmi_email", className = if (isEmailError.value) "text-red-600" else "")
+                        div().bind(isInputEmailError) {
+                            label("*E-mail", forId = "wagmi_email", className = if (isInputEmailError.value) "text-red-600" else "")
                         }
                         textInput(type = InputType.EMAIL, className = cssInput) {
                             id = "wagmi_email"
@@ -195,19 +213,26 @@ private fun Container.sectionReserveShuttle() {
                             value = formInputEMail
                             onInput {
                                 it.preventDefault()
-                                isEmailError.value = false
+                                isInputEmailError.value = false
                                 formInputEMail = this.value.orEmpty()
                             }
                         }
                     }
                     div {
-                        label("*Phone Number", forId = "wagmi_phone")
-                        textInput(type = InputType.TEXT, className = cssInput) {
+                        div().bind(isInputPhoneError) {
+                            label("*Phone Number", forId = "wagmi_phone", className = if (isInputPhoneError.value) "text-red-600" else "")
+                        }
+                        textInput(type = InputType.TEL, className = cssInput) {
                             id = "wagmi_phone"
                             placeholder = "+1(999) 999-9999"
                             onInput {
                                 it.preventDefault()
-                                formInputPhone = this.value.orEmpty()
+                                isInputPhoneError.value = false
+                                val inputValue = this.value.orEmpty()
+                                val allowedChars = setOf('+', '(', ')', ' ', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                val filteredValue = inputValue.filter { char -> allowedChars.contains(char) }
+                                this.value = filteredValue
+                                formInputPhone = filteredValue
                             }
                         }
                     }
@@ -215,38 +240,79 @@ private fun Container.sectionReserveShuttle() {
 
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
-                        div().bind(isDateError) {
-                            label("*Date of Shuttle service", forId = "wagmi_date_shuttle", className = if (isDateError.value) "text-red-600" else "")
+                        div().bind(isInputDateError) {
+                            label("*Date of Shuttle service", forId = "wagmi_date_shuttle", className = if (isInputDateError.value) "text-red-600" else "")
                         }
                         textInput(type = InputType.DATE, className = cssInput) {
                             id = "wagmi_date_shuttle"
                             placeholder = "00/00/0000"
                             onInput {
                                 it.preventDefault()
-                                isDateError.value = false
+                                isInputDateError.value = false
                                 formInputDateShuttle = this.value.orEmpty()
                             }
                         }
                     }
                 }
             }
-            button("Submit Request", type = ButtonType.SUBMIT, className = "bg-[#6600CC] text-white pt-0 pb-0 pl-4 pr-4 w-full h-[50px] rounded-full text-xl font-['Montserrat',Arial,sans-serif] font-semibold") {
+            button("Submit Request", type = ButtonType.SUBMIT, className = "bg-[#6600CC] text-white pt-0 pb-0 pl-4 pr-4 w-full h-[50px] rounded-full text-xl font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                 onClick {
                     it.preventDefault()
                     AppScope.withProgress {
+                        isInputMainError.value = false
+
+                        if (formInputFirstName.isEmpty()) {
+                            val inputElement = document.getElementById("wagmi_first_name") as? HTMLInputElement
+                            inputElement?.focus()
+                            isInputFirstNameError.value = true
+                            isInputMainError.value = true
+                        }
+
+                        if (formInputLastName.isEmpty()) {
+                            val inputElement = document.getElementById("wagmi_last_name") as? HTMLInputElement
+                            inputElement?.focus()
+                            isInputLastNameError.value = true
+                            isInputMainError.value = true
+                        }
+
+                        if (formInputCompanyName.isEmpty()) {
+                            val inputElement = document.getElementById("wagmi_company_name") as? HTMLInputElement
+                            inputElement?.focus()
+                            isInputCompanyNameError.value = true
+                            isInputMainError.value = true
+                        }
+
+                        if (formInputAddressName.isEmpty()) {
+                            val inputElement = document.getElementById("wagmi_address") as? HTMLInputElement
+                            inputElement?.focus()
+                            isInputAddressError.value = true
+                            isInputMainError.value = true
+                        }
+
                         if (!isValidEmail(formInputEMail)) {
 //                            window.alert("Invalid EMail")
                             val inputElement = document.getElementById("wagmi_email") as? HTMLInputElement
                             inputElement?.focus()
-                            isEmailError.value = true
-                            return@withProgress
+                            isInputEmailError.value = true
+                            isInputMainError.value = true
+                        }
+
+                        val phoneRegex = Regex("""^\+\d{1}\(\d{3}\) \d{3}-\d{4}$""")
+                        if (!phoneRegex.matches(formInputPhone)) {
+                            val inputElement = document.getElementById("wagmi_phone") as? HTMLInputElement
+                            inputElement?.focus()
+                            isInputPhoneError.value = true
+                            isInputMainError.value = true
                         }
 
                         if (!isValidShuttleDate(formInputDateShuttle)) {
-//                            window.alert("Invalid Date")
                             val inputElement = document.getElementById("wagmi_date_shuttle") as? HTMLInputElement
                             inputElement?.focus()
-                            isDateError.value = true
+                            isInputDateError.value = true
+                            isInputMainError.value = true
+                        }
+
+                        if (isInputMainError.value) {
                             return@withProgress
                         }
 
@@ -255,7 +321,7 @@ private fun Container.sectionReserveShuttle() {
                                         firstName = formInputFirstName,
                                         lastName = formInputLastName,
                                         company = formInputCompanyName,
-                                        hotel = formInputHotelName,
+                                        address = formInputAddressName,
                                         email = formInputEMail,
                                         phone = formInputPhone,
                                         date = formInputDateShuttle)
@@ -265,7 +331,7 @@ private fun Container.sectionReserveShuttle() {
                         formInputFirstName = ""
                         formInputLastName = ""
                         formInputCompanyName = ""
-                        formInputHotelName = ""
+                        formInputAddressName = ""
                         formInputEMail = ""
                         formInputPhone = ""
                         formInputDateShuttle = ""
@@ -275,7 +341,7 @@ private fun Container.sectionReserveShuttle() {
                                 "wagmi_first_name",
                                 "wagmi_last_name",
                                 "wagmi_company_name",
-                                "wagmi_hotel",
+                                "wagmi_address",
                                 "wagmi_email",
                                 "wagmi_phone",
                                 "wagmi_date_shuttle"
@@ -310,12 +376,12 @@ private fun Container.sectionRentalityApp() {
                 + "place. Download our app to simplify your interactions"
             }
             link(label = "", url = "https://apps.apple.com/ua/app/rentality/id6736899320", className = "max-md:w-full w-fit") {
-                button(text = "Download for iOS", className = "flex mt-8 md:mt-14 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold") {
+                button(text = "Download for iOS", className = "flex mt-8 md:mt-14 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                     image(src = "/images/ic_apple_wagmi.svg", className = "ml-4")
                 }
             }
             link(label = "", url = "https://play.google.com/store/apps/details?id=xyz.rentality.rentality", className = "max-md:w-full w-fit") {
-                button(text = "Download for Android", className = "flex mt-4 md:mt-6 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold") {
+                button(text = "Download for Android", className = "flex mt-4 md:mt-6 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                     image(src = "/images/ic_android_wagmi.svg", className = "ml-4")
                 }
             }
@@ -329,7 +395,7 @@ private fun Container.sectionBecomeHost() {
         id = "become-a-host"
         div(className = "flex flex-col") {
             p(className = "text-[28px] md:text-[60px] font-bold md:leading-[76px]") {
-                + "Host Your Car "
+                + "List Your Car "
                 br(className = "max-md:hidden")
                 + "with Rentality"
             }
@@ -392,10 +458,10 @@ private fun Container.sectionListCaronRentality() {
             div(className = "w-full h-full px-[25px] py-[35px] md:p-[50px]") {
                 image(src = "/images/img_wagmi_no_middlemen.svg", className = "relative z-10 max-md:w-[70px]")
                 p(className = "text-[24px] md:text-[28px] font-semibold relative z-10 mt-4 md:mt-10") {
-                    + "No Middlemen"
+                    + "No Intermediaries"
                 }
                 p(className = "text-base md:text-xl font-medium relative z-10 mt-2 md:mt-6") {
-                    + "Rentality eliminates intermediaries. Every deal is a direct agreement between you and the guest"
+                    + "Every deal is a direct agreement between you and the guest"
                 }
             }
         }
@@ -501,7 +567,7 @@ private fun Container.sectionRegisterAsHost() {
             + "Less Effort?"
         }
         link(label = "", url = "https://demo.rentality.xyz/host/profile", className = "max-md:w-full") {
-            button(text = "Register as a Host", className = "flex max-md:mt-6 mt-14 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-semibold") {
+            button(text = "Register as a Host", className = "flex max-md:mt-6 mt-14 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                 image(src = "/images/tabler_arrow_right.svg", className = "ml-4")
             }
         }

@@ -180,7 +180,7 @@ private fun Container.headWagmi2025Page() {
                 }
             }
             link(label = "", url = "https://app.rentality.xyz/guest", className = "max-md:w-full") {
-                button(text = "Rent a Car", className = "flex max-md:mt-6 items-center justify-center bg-white rounded-full max-md:w-full md:w-[352px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold") {
+                button(text = "Rent a Car", className = "flex max-md:mt-6 items-center justify-center bg-white rounded-full max-md:w-full md:w-[352px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                     image(src = "/images/maki_car.svg", className = "ml-4")
                 }
             }

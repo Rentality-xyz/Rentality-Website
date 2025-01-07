@@ -227,7 +227,8 @@ fun Container.menuWagmi2025() {
     nav(className = "hidden xl:block ml-auto") {
         id = "menu-wagmi2025"
         div(className = "flex items-center text-base justify-center") {
-            link(label = "Reserve free shuttle", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+            button(text = "", className= "border-gradient items-center px-4 h-[40px] rounded-[10px] text-base font-['Montserrat',Arial,sans-serif] mr-[10px] active:opacity-75 active:scale-95 transition duration-150") {
+                + "Reserve free shuttle"
                 onClick {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
@@ -235,7 +236,8 @@ fun Container.menuWagmi2025() {
                     Pace.stop()
                 }
             }
-            link(label = "Rentality App", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+            button(text = "", className= "border-gradient items-center px-4 h-[40px] rounded-[10px] text-base font-['Montserrat',Arial,sans-serif] mr-[10px] active:opacity-75 active:scale-95 transition duration-150") {
+                + "Rentality App"
                 onClick {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
@@ -243,11 +245,12 @@ fun Container.menuWagmi2025() {
                     Pace.stop()
                 }
             }
-            link(label = "Become a host", url = "", className = "cursor-pointer mr-6 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+            button(text = "", className= "border-gradient items-center px-4 h-[40px] rounded-[10px] text-base font-['Montserrat',Arial,sans-serif] mr-[10px] active:opacity-75 active:scale-95 transition duration-150") {
+                + "Become a host"
                 onClick {
                     it.preventDefault()
                     ConduitManager.redirectPage(Pages.WAGMI_2025)
-                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#register-as-a-host")
                     Pace.stop()
                 }
             }
@@ -294,13 +297,13 @@ fun Container.menuMobWagmi2025() {
                 }
             }
         }
-        link(label = "Become a host", url = "#become-a-host", className = "font-['Montserrat',Arial,sans-serif]") {
+        link(label = "Become a host", url = "#register-as-a-host", className = "font-['Montserrat',Arial,sans-serif]") {
             onEvent {
                 click = { e ->
                     e.preventDefault()
                     ConduitManager.redirectPage(Pages.HOME)
                     hideMenuMobWagmi()
-                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#become-a-host")
+                    ConduitManager.redirectUrl("${Pages.WAGMI_2025.url}/#register-as-a-host")
                     Pace.stop()
                 }
             }
