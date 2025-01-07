@@ -5,7 +5,9 @@ import com.eigenmethod.rentality.constants.CONTAINER_PX
 import com.eigenmethod.rentality.constants.MAIN_COLOR_BG
 import com.eigenmethod.rentality.constants.MAX_WITH_CONTENT
 import com.eigenmethod.rentality.controllers.sendWagmi2025DataToGoogleTable
+import com.eigenmethod.rentality.models.ELegalMatters
 import com.eigenmethod.rentality.models.Wagmi2025Data
+import com.eigenmethod.rentality.navigation_state.Pages
 import com.eigenmethod.rentality.utilites.isValidEmail
 import com.eigenmethod.rentality.utilites.isValidShuttleDate
 import com.eigenmethod.rentality.utilites.orZero
@@ -32,8 +34,19 @@ private var isInputAddressError = ObservableValue(false)
 private var isInputEmailError = ObservableValue(false)
 private var isInputPhoneError = ObservableValue(false)
 private var isInputDateError = ObservableValue(false)
+private var isBtnSocialTwitterClicked = ObservableValue(false)
+private var isBtnSocialTelegramClicked = ObservableValue(false)
+private var isBtnSocialDiscoedClicked = ObservableValue(false)
+private var isDialogReserveShuttleVisible = ObservableValue(false)
+private var countClickedBtn = ObservableValue(0)
 
 private const val cssInput = "pl-5 pr-5 border-b border-[#EFEFEF] bg-white h-[50px] text-base w-full"
+private const val ccsSocialBntEnabled = "flex w-full justify-center p-4 rounded-full bg-[#F4F4F4]"
+private const val ccsSocialBntDisabled = "$ccsSocialBntEnabled text-[#1E1E3240]"
+private const val countSocialBtn = 3
+private const val cssBtnSubmitMain = "text-white pt-0 pb-0 pl-4 pr-4 w-full h-[50px] rounded-full text-xl font-['Montserrat',Arial,sans-serif] font-semibold"
+private const val cssBtnSubmitEnabled = "$cssBtnSubmitMain bg-[#6600CC] active:opacity-75 active:scale-95 transition duration-150"
+private const val cssBtnSubmitDisabled = "$cssBtnSubmitMain bg-[#CCCCCC]"
 
 private var formInputFirstName: String = ""
 private var formInputLastName: String = ""
@@ -43,7 +56,7 @@ private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 private var formInputDateShuttle: String = ""
 
-private var isDialogReserveShuttleVisible = ObservableValue(false)
+
 
 
 fun Container.wagmi2025Page() {
@@ -68,7 +81,7 @@ fun Container.wagmi2025Page() {
         }
     }
 
-    image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute min-[360px]:top-[330%] min-[380px]:top-[320%] min-[410px]:top-[315%] left-0 w-full")
+    image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute min-[360px]:top-[374%] min-[380px]:top-[364%] min-[410px]:top-[358%] left-0 w-full")
 
     div(className="mx-auto mt-4 $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white font-['Montserrat',Arial,sans-serif]") {
         id = "main-wagmi2025-page"
@@ -138,7 +151,7 @@ private fun Container.sectionReserveShuttle() {
                 + "22, 23, and 24, 2025."
             }
         }
-        form(className = "mt-8") {
+        form(className = "mt-8 text-base md:text-xl font-medium") {
             div {
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
@@ -224,12 +237,12 @@ private fun Container.sectionReserveShuttle() {
                         }
                         textInput(type = InputType.TEL, className = cssInput) {
                             id = "wagmi_phone"
-                            placeholder = "+1(999) 999-9999"
+                            placeholder = "+1(999)999-9999"
                             onInput {
                                 it.preventDefault()
                                 isInputPhoneError.value = false
                                 val inputValue = this.value.orEmpty()
-                                val allowedChars = setOf('+', '(', ')', ' ', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                val allowedChars = setOf('+', '(', ')', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
                                 val filteredValue = inputValue.filter { char -> allowedChars.contains(char) }
                                 this.value = filteredValue
                                 formInputPhone = filteredValue
@@ -255,105 +268,168 @@ private fun Container.sectionReserveShuttle() {
                     }
                 }
             }
-            button("Submit Request", type = ButtonType.SUBMIT, className = "bg-[#6600CC] text-white pt-0 pb-0 pl-4 pr-4 w-full h-[50px] rounded-full text-xl font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
-                onClick {
-                    it.preventDefault()
-                    AppScope.withProgress {
-                        isInputMainError.value = false
-
-                        if (formInputFirstName.isEmpty()) {
-                            val inputElement = document.getElementById("wagmi_first_name") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputFirstNameError.value = true
-                            isInputMainError.value = true
+            div(className = "w-full flex items-center justify-between").bind(countClickedBtn) {
+                id = "subscribe_social_network"
+                div {
+                    + "*Subscribe to our "
+                    br(className = "md:hidden")
+                    + "social networks"
+                }
+                div(className = "flex max-md:flex-col") {
+                    div {
+                        + "Subscribed"
+                        span(content = ":", className = "md:hidden")
+                    }
+                    span(content = "${countClickedBtn.value}/3", className = "text-[#6600CC] max-md:ml-auto md:pl-1")
+                }
+            }
+            div(className = "w-full mt-3 mb-9 flex flex-col md:grid grid-cols-3 gap-4 items-center justify-between font-semibold") {
+                id = "btn_social_network"
+                div(className = "w-full").bind(isBtnSocialTwitterClicked) {
+                    link("", url = "https://x.com/Rentality_Info", target = "_blank", className = if (isBtnSocialTwitterClicked.value) ccsSocialBntEnabled else ccsSocialBntDisabled) {
+                        div(className = "flex items-center justify-center flex-grow") {
+                            image(src = "/images/social/logos_twitter_wagmi.svg", className = if (isBtnSocialTwitterClicked.value) "mr-4" else "hidden")
+                            image(src = "/images/social/logos_twitter_disabled_wagmi.svg", className = if (isBtnSocialTwitterClicked.value) "hidden" else "mr-4")
+                            + "Twitter"
                         }
-
-                        if (formInputLastName.isEmpty()) {
-                            val inputElement = document.getElementById("wagmi_last_name") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputLastNameError.value = true
-                            isInputMainError.value = true
+                        image(src = "/images/padlock_wagmir.svg", className = if (isBtnSocialTwitterClicked.value) "hidden" else "ml-auto")
+                        onClick {
+                            isBtnSocialTwitterClicked.value = true
+                            countClickedBtn.value = ++countClickedBtn.value
                         }
-
-                        if (formInputCompanyName.isEmpty()) {
-                            val inputElement = document.getElementById("wagmi_company_name") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputCompanyNameError.value = true
-                            isInputMainError.value = true
+                    }
+                }
+                div(className = "w-full").bind(isBtnSocialTelegramClicked) {
+                    link("", url = "https://t.me/rentality_xyz", target = "_blank", className = if (isBtnSocialTelegramClicked.value) ccsSocialBntEnabled else ccsSocialBntDisabled) {
+                        div(className = "flex items-center justify-center flex-grow") {
+                            image(src = "/images/social/logos_telegram_wagmi.svg", className = if (isBtnSocialTelegramClicked.value) "mr-4" else "hidden")
+                            image(src = "/images/social/logos_telegram_disabled_wagmi.svg", className = if (isBtnSocialTelegramClicked.value) "hidden" else "mr-4")
+                            + "Telegram"
                         }
-
-                        if (formInputAddressName.isEmpty()) {
-                            val inputElement = document.getElementById("wagmi_address") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputAddressError.value = true
-                            isInputMainError.value = true
+                        image(src = "/images/padlock_wagmir.svg", className = if (isBtnSocialTelegramClicked.value) "hidden" else "ml-auto")
+                        onClick {
+                            isBtnSocialTelegramClicked.value = true
+                            countClickedBtn.value = ++countClickedBtn.value
                         }
+                    }
+                }
+                div(className = "w-full").bind(isBtnSocialDiscoedClicked) {
+                    link("", url = "https://discord.com/invite/rentality ", target = "_blank", className = if (isBtnSocialDiscoedClicked.value) ccsSocialBntEnabled else ccsSocialBntDisabled) {
+                        div(className = "flex items-center justify-center flex-grow") {
+                            image(src = "/images/social/logos_discord_wagmi.svg", className = if (isBtnSocialDiscoedClicked.value) "mr-4" else "hidden")
+                            image(src = "/images/social/logos_discord_disabled_wagmi.svg", className = if (isBtnSocialDiscoedClicked.value) "hidden" else "mr-4")
+                            + "Discord"
+                        }
+                        image(src = "/images/padlock_wagmir.svg", className = if (isBtnSocialDiscoedClicked.value) "hidden" else "ml-auto")
+                        onClick {
+                            isBtnSocialDiscoedClicked.value = true
+                            countClickedBtn.value = ++countClickedBtn.value
+                        }
+                    }
+                }
+            }
+            div().bind(countClickedBtn) {
+                button("Submit Request", type = ButtonType.SUBMIT, className = if (countClickedBtn.value < countSocialBtn) cssBtnSubmitDisabled else cssBtnSubmitEnabled) {
+                    disabled = countClickedBtn.value < countSocialBtn
+                    onClick {
+                        it.preventDefault()
+                        AppScope.withProgress {
+                            isInputMainError.value = false
 
-                        if (!isValidEmail(formInputEMail)) {
+                            if (formInputFirstName.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_first_name") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputFirstNameError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (formInputLastName.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_last_name") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputLastNameError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (formInputCompanyName.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_company_name") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputCompanyNameError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (formInputAddressName.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_address") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputAddressError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (!isValidEmail(formInputEMail)) {
 //                            window.alert("Invalid EMail")
-                            val inputElement = document.getElementById("wagmi_email") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputEmailError.value = true
-                            isInputMainError.value = true
+                                val inputElement = document.getElementById("wagmi_email") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputEmailError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            val phoneRegex = Regex("""^\+\d{1}\(\d{3}\)\d{3}-\d{4}$""")
+                            if (!phoneRegex.matches(formInputPhone)) {
+                                val inputElement = document.getElementById("wagmi_phone") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputPhoneError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (!isValidShuttleDate(formInputDateShuttle)) {
+                                val inputElement = document.getElementById("wagmi_date_shuttle") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputDateError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (isInputMainError.value) {
+                                return@withProgress
+                            }
+
+                            sendWagmi2025DataToGoogleTable(
+                                    Wagmi2025Data(
+                                            firstName = formInputFirstName,
+                                            lastName = formInputLastName,
+                                            company = formInputCompanyName,
+                                            address = formInputAddressName,
+                                            email = formInputEMail,
+                                            phone = formInputPhone,
+                                            date = formInputDateShuttle)
+                            )
+
+                            // Очистка данных формы
+                            formInputFirstName = ""
+                            formInputLastName = ""
+                            formInputCompanyName = ""
+                            formInputAddressName = ""
+                            formInputEMail = ""
+                            formInputPhone = ""
+                            formInputDateShuttle = ""
+
+                            // Очистка содержимого текстовых полей
+                            val inputs = listOf(
+                                    "wagmi_first_name",
+                                    "wagmi_last_name",
+                                    "wagmi_company_name",
+                                    "wagmi_address",
+                                    "wagmi_email",
+                                    "wagmi_phone",
+                                    "wagmi_date_shuttle"
+                            )
+
+                            inputs.forEach { id ->
+                                val inputElement = document.getElementById(id) as? HTMLInputElement
+                                inputElement?.value = ""
+                            }
+
+                            // Показать диалог
+                            isDialogReserveShuttleVisible.value = true
                         }
-
-                        val phoneRegex = Regex("""^\+\d{1}\(\d{3}\) \d{3}-\d{4}$""")
-                        if (!phoneRegex.matches(formInputPhone)) {
-                            val inputElement = document.getElementById("wagmi_phone") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputPhoneError.value = true
-                            isInputMainError.value = true
-                        }
-
-                        if (!isValidShuttleDate(formInputDateShuttle)) {
-                            val inputElement = document.getElementById("wagmi_date_shuttle") as? HTMLInputElement
-                            inputElement?.focus()
-                            isInputDateError.value = true
-                            isInputMainError.value = true
-                        }
-
-                        if (isInputMainError.value) {
-                            return@withProgress
-                        }
-
-                        sendWagmi2025DataToGoogleTable(
-                                Wagmi2025Data(
-                                        firstName = formInputFirstName,
-                                        lastName = formInputLastName,
-                                        company = formInputCompanyName,
-                                        address = formInputAddressName,
-                                        email = formInputEMail,
-                                        phone = formInputPhone,
-                                        date = formInputDateShuttle)
-                        )
-
-                        // Очистка данных формы
-                        formInputFirstName = ""
-                        formInputLastName = ""
-                        formInputCompanyName = ""
-                        formInputAddressName = ""
-                        formInputEMail = ""
-                        formInputPhone = ""
-                        formInputDateShuttle = ""
-
-                        // Очистка содержимого текстовых полей
-                        val inputs = listOf(
-                                "wagmi_first_name",
-                                "wagmi_last_name",
-                                "wagmi_company_name",
-                                "wagmi_address",
-                                "wagmi_email",
-                                "wagmi_phone",
-                                "wagmi_date_shuttle"
-                        )
-
-                        inputs.forEach { id ->
-                            val inputElement = document.getElementById(id) as? HTMLInputElement
-                            inputElement?.value = ""
-                        }
-
-                        // Показать диалог
-                        isDialogReserveShuttleVisible.value = true
                     }
                 }
             }
@@ -612,9 +688,79 @@ private fun Container.showDialogReserveShuttle() {
 }
 
 private fun Container.footerWagmi() {
-    div(className="flex max-md:flex-col items-center justify-between mb-8 md:mt-36 min-[1537px]:mt-72 pt-8 border-t border-[#3A2E47] text-white") {
+    div(className="flex max-md:flex-col justify-between mb-8 md:mt-36 min-[1537px]:mt-72 pt-8 border-t border-[#3A2E47] text-white") {
         id = "footer-wagmi"
-        image(src = "/images/logo_rentality_wagmi.svg")
-        div("©2025 by Rentality LLC", className = "leading-6 max-md:mt-8")
+        div(className = "flex flex-col justify-between") {
+            image(src = "/images/logo_rentality_wagmi.svg")
+            div("©2025 by Rentality LLC", className = "max-md:hidden")
+        }
+        footerLegalMattersWagmi()
+        footerInfoBlockWagmi()
+    }
+}
+
+private fun Container.footerLegalMattersWagmi() {
+    div(className = "relative z-0 flex flex-col max-md:items-center max-md:mt-6") {
+        link(label = "Legal matters", url = Pages.LEGAL_MATTERS.url, target = "_blank", className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline")
+        link(label = "Terms of service", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.TERMS.value}", target = "_blank", className = "mt-3 pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
+        link(label = "Cancellation policy", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.CANCELLATION.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
+        link(label = "Prohibited uses", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PROHIBITEDUSES.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
+        link(label = "Privacy policy", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PRIVACY.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
+    }
+}
+
+private fun Container.footerInfoBlockWagmi() {
+    div(className = "relative z-0 flex flex-col max-md:mt-8") {
+        div(className = "md:ml-auto") {
+            link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
+                div("info@rentality.xyz")
+            }
+            div(className = "flex flex-col mt-1.5 max-[560px]:items-center") {
+                div(className = "flex") {
+                    link("", url = "https://www.linkedin.com/company/rentalitycorp/?viewAsMember=true") {
+                        image(src = "/images/social/linkedin-logo.svg", className = "w-[30px]")
+                    }
+                    link("", url = "https://twitter.com/Rentality_Info") {
+                        image(src = "/images/social/x-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://discord.gg/rentality") {
+                        image(src = "/images/social/discord-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://t.me/rentality_xyz") {
+                        image(src = "/images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                }
+                div(className = "flex") {
+                    link("", url = "https://mirror.xyz/0x263660F0ab0014e956d42f85DccD918bBa2Df587") {
+                        image(src = "/images/social/mirror-logo.svg", className = "w-[30px]")
+                    }
+                    link("", url = "https://warpcast.com/rentality") {
+                        image(src = "/images/social/warpcast-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://www.instagram.com/rentality_/") {
+                        image(src = "/images/social/instagram-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://medium.com/@rentality") {
+                        image(src = "/images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                }
+            }
+        }
+        div(className = "md:absolute w-[250px] bottom-0 right-[-34px] max-md:m-auto max-md:mt-8") {
+            div(className = "trustpilot-widget") {
+                setAttribute("data-locale", "en-US")
+                setAttribute("data-template-id", "56278e9abfbbba0bdcd568bc")
+                setAttribute("data-businessunit-id", "67459f54bfd7b10d2666003e")
+                setAttribute("data-style-height", "52px")
+                setAttribute("data-style-width", "100%")
+
+                link(
+                        label = "Trustpilot",
+                        url = "https://www.trustpilot.com/review/rentality.xyz",
+                        target = "_blank"
+                )
+            }
+        }
+        div("©2025 by Rentality LLC", className = "md:hidden m-auto mt-7")
     }
 }

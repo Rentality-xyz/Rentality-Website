@@ -24,8 +24,8 @@ private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 
 fun Container.footer() {
-    footer(className="bg-[url('images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[600px] min-[560px]:h-[450px] lg:h-[290px]") {
-        image(src = "images/red-generic-sport-ca.png", className="absolute bottom-0 left-0")
+    footer(className="bg-[url('/images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[600px] min-[560px]:h-[450px] lg:h-[290px]") {
+        image(src = "/images/red-generic-sport-ca.png", className="absolute bottom-0 left-0")
 //        div("©2024 by Rentality LLC", className = "absolute bottom-0 left-4 sm:hidden text-white font-['Montserrat',Arial,sans-serif]")
         div(className = "text-white max-w-[$MAX_WITH_CONTENT] mx-auto $CONTAINER_PX flex max-[560px]:flex-col flex-row h-full") {
             id = "footer-content"
@@ -38,7 +38,7 @@ fun Container.footer() {
 
 fun Container.footerInfoBlock() {
     div(className = "z-0 flex flex-col lg:pt-[40px] max-lg:mx-auto lg:ml-auto w-max h-full") {
-        image(src = "images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
+        image(src = "/images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
         div {
             link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
                 div("info@rentality.xyz")
@@ -46,33 +46,33 @@ fun Container.footerInfoBlock() {
             div(className = "flex flex-col mt-1.5 max-[560px]:items-center") {
                 div(className = "flex") {
                     link("", url = "https://www.linkedin.com/company/rentalitycorp/?viewAsMember=true") {
-                        image(src = "images/social/linkedin-logo.svg", className = "w-[30px]")
+                        image(src = "/images/social/linkedin-logo.svg", className = "w-[30px]")
                     }
                     link("", url = "https://twitter.com/Rentality_Info") {
-                        image(src = "images/social/x-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/x-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://discord.gg/rentality") {
-                        image(src = "images/social/discord-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/discord-logo.svg", className = "ml-1.5 w-[30px]")
                     }
 //                    link("", url = "mailto:info@rentality.xyz", className = "lg:hidden") {
-//                        image(src = "images/ic-email-50.png", className = "ml-1.5 w-[30px] mt-0.5")
+//                        image(src = "/images/ic-email-50.png", className = "ml-1.5 w-[30px] mt-0.5")
 //                    }
                     link("", url = "https://t.me/rentality_xyz") {
-                        image(src = "images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                 }
                 div(className = "flex") {
                     link("", url = "https://mirror.xyz/0x263660F0ab0014e956d42f85DccD918bBa2Df587") {
-                        image(src = "images/social/mirror-logo.svg", className = "w-[30px]")
+                        image(src = "/images/social/mirror-logo.svg", className = "w-[30px]")
                     }
                     link("", url = "https://warpcast.com/rentality") {
-                        image(src = "images/social/warpcast-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/warpcast-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://www.instagram.com/rentality_/") {
-                        image(src = "images/social/instagram-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/instagram-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://medium.com/@rentality") {
-                        image(src = "images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                 }
             }
