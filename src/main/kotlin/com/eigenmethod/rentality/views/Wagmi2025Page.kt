@@ -237,15 +237,16 @@ private fun Container.sectionReserveShuttle() {
                         }
                         textInput(type = InputType.TEL, className = cssInput) {
                             id = "wagmi_phone"
-                            placeholder = "+1(999)999-9999"
+                            placeholder = "+19999999999"
                             onInput {
                                 it.preventDefault()
                                 isInputPhoneError.value = false
                                 val inputValue = this.value.orEmpty()
-                                val allowedChars = setOf('+', '(', ')', '-', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+                                val allowedChars = setOf('+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
                                 val filteredValue = inputValue.filter { char -> allowedChars.contains(char) }
-                                this.value = filteredValue
-                                formInputPhone = filteredValue
+                                val limitedValue = filteredValue.take(12)
+                                this.value = limitedValue
+                                formInputPhone = limitedValue
                             }
                         }
                     }
@@ -372,7 +373,7 @@ private fun Container.sectionReserveShuttle() {
                                 isInputMainError.value = true
                             }
 
-                            val phoneRegex = Regex("""^\+\d{1}\(\d{3}\)\d{3}-\d{4}$""")
+                            val phoneRegex = Regex("""^\+\d{11}${'$'}""")
                             if (!phoneRegex.matches(formInputPhone)) {
                                 val inputElement = document.getElementById("wagmi_phone") as? HTMLInputElement
                                 inputElement?.focus()
