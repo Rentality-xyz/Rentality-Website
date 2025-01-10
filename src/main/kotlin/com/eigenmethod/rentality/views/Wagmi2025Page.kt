@@ -81,8 +81,6 @@ fun Container.wagmi2025Page() {
         }
     }
 
-    image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute min-[360px]:top-[374%] min-[380px]:top-[364%] min-[410px]:top-[358%] left-0 w-full")
-
     div(className="mx-auto mt-4 $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white font-['Montserrat',Arial,sans-serif]") {
         id = "main-wagmi2025-page"
         image(src = "/images/bg_logo_zoya.png", className = "max-xl:hidden absolute top-[1072px] right-0 max-h-[593px]")
@@ -443,7 +441,7 @@ private fun Container.sectionRentalityApp() {
         id = "rentality-app"
         div(className = "relative z-10 flex flex-col max-md:items-center") {
             p(className = "text-[28px] md:text-[64px] font-bold md:leading-[76px]") {
-                + "Get the"
+                + "Get the "
                 br(className = "max-md:hidden")
                 + "Rentality App"
             }
@@ -464,6 +462,7 @@ private fun Container.sectionRentalityApp() {
             }
         }
         image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-200px]")
+        image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute top-[12%] left-0 w-full")
     }
 }
 

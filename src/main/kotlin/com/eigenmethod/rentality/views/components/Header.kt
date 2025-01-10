@@ -167,16 +167,12 @@ private fun Container.headWagmi2025Page() {
         }
         div(className = "bg-gradient-wagmi-exclusive-offer flex max-md:flex-col mt-[280px] md:mt-[354px] rounded-[20px] pl-[35px] pr-[45px] py-[30px] items-center justify-between") {
             div(className = "flex max-md:flex-col") {
-                image(src = "/images/wagmi_exclusive_offer.svg", className = "max-md:hidden")
-                p(className = "md:ml-7 text-base md:text-xl font-medium md:leading-8 max-md:text-center") {
-                    + "Exclusive offer for conference attendees: use promo code "
-                    br(className = "max-md:hidden")
+                div(className = "text-2xl md:text-4xl md:leading-8 max-md:text-center font-bold") {
+                    span(content = "Get 20%", className = "text-[#5DF4E8]")
+                    + " with promo code "
                     span(content = "WAGMI2025", className = "text-[#5DF4E8]")
-                    + " to get  "
-                    span(content = "20% off", className = "text-[#5DF4E8]")
-                    + " your first ride. The code is"
-                    br(className = "max-md:hidden")
-                    + "active for 6 months from the start of the conference"
+//                    br(className = "max-md:hidden")
+                    p(content = "*the code is active for 6 months from the start of the conference", className = "mt-6 text-base md:text-xl font-medium")
                 }
             }
             link(label = "", url = "https://app.rentality.xyz/guest", className = "max-md:w-full") {
