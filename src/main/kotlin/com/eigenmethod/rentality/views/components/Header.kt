@@ -161,11 +161,11 @@ private fun Container.headWagmi2025Page() {
         }
 
         p(className = "mt-7 text-xl font-medium leading-7 max-md:text-center") {
-            + "We are pioneers in the Web3 car rental industry, and our mission is to"
-            br()
+            + "We are pioneers in the Web3 car rental industry, and our mission is to "
+            br(className = "max-md:hidden")
             + "make your participation in the conference as comfortable as possible"
         }
-        div(className = "bg-gradient-wagmi-exclusive-offer flex max-md:flex-col mt-[280px] md:mt-[354px] rounded-[20px] pl-[35px] pr-[45px] py-[30px] items-center justify-between") {
+        div(className = "bg-gradient-wagmi-exclusive-offer flex max-md:flex-col mt-[200px] md:mt-[354px] rounded-[20px] pl-[35px] pr-[45px] py-[30px] items-center justify-between") {
             div(className = "flex max-md:flex-col") {
                 div(className = "text-2xl md:text-4xl md:leading-8 max-md:text-center font-bold") {
                     span(content = "Get 20%", className = "text-[#5DF4E8]")

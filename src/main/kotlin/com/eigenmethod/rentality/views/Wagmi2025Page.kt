@@ -89,18 +89,25 @@ fun Container.wagmi2025Page() {
         image(src = "/images/bg_arrows_from_logo_zoya.png", className = "max-xl:hidden absolute top-[2542px] left-0 max-w-[365px]")
 
         sectionReserveShuttle()
-        sectionRentalityApp()
-        sectionBecomeHost()
-        div(className = "mt-20 md:mt-44 text-[28px] md:text-[64px] md:leading-[76px] w-full text-center font-bold") {
-            + "Why List Your "
-            br(className = "max-md:hidden")
-            + "Car on Rentality?"
+    }
+
+    div(className = "relative w-full font-['Montserrat',Arial,sans-serif]") {
+        div(className="mt-8 mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
+            sectionRentalityApp()
         }
+        image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-200px]")
+        image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute top-[70px] left-0 w-full")
     }
 
     div(className = "w-full md:bg-[url('/images/bg_avto_103_wagmi.png')] bg-cover bg-no-repeat bg-center font-['Montserrat',Arial,sans-serif]") {
-        div(className="mt-8 mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
-            sectionListCaronRentality()
+        div(className="mt-[256px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
+            sectionBecomeHost()
+            div(className = "mt-20 md:mt-44 text-[28px] md:text-[64px] md:leading-[76px] w-full text-center font-bold") {
+                + "Why List Your "
+                br(className = "max-md:hidden")
+                + "Car on Rentality?"
+            }
+            sectionListCarOnRentality()
         }
     }
 
@@ -128,7 +135,7 @@ fun Container.wagmi2025Page() {
 }
 
 private fun Container.sectionReserveShuttle() {
-    div(className="relative z-20 flex flex-col mt-[74px] pl-[35px] pr-[45px] py-[30px] rounded-[20px] bg-white text-[#1E1E32]") {
+    div(className="relative z-20 flex flex-col mt-[34px] pl-[35px] pr-[45px] py-[30px] rounded-[20px] bg-white text-[#1E1E32]") {
         id = "reserve-shuttle"
         div(className = "flex max-md:flex-col pb-12 border-b-2 border-[#EFEFEF] md:items-center justify-between") {
             div(className = "flex max-md:flex-col") {
@@ -437,7 +444,7 @@ private fun Container.sectionReserveShuttle() {
 }
 
 private fun Container.sectionRentalityApp() {
-    div(className="relative z-10 flex max-md:flex-col mt-14 md:mt-56 h-[700px] md:h-[560px]") {
+    div(className="relative z-10 flex max-md:flex-col mt-[70px] md:mt-56 h-[700px] md:h-[560px]") {
         id = "rentality-app"
         div(className = "relative z-10 flex flex-col max-md:items-center") {
             p(className = "text-[28px] md:text-[64px] font-bold md:leading-[76px]") {
@@ -461,8 +468,6 @@ private fun Container.sectionRentalityApp() {
                 }
             }
         }
-        image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-200px]")
-        image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute top-[12%] left-0 w-full")
     }
 }
 
@@ -491,8 +496,8 @@ private fun Container.sectionBecomeHost() {
     }
 }
 
-private fun Container.sectionListCaronRentality() {
-    div(className="relative z-10 flex-col md:grid grid-cols-2 gap-4") {
+private fun Container.sectionListCarOnRentality() {
+    div(className="relative z-10 flex-col md:grid grid-cols-2 gap-4 mt-7") {
         id = "list-caron-rentality"
 
         div(className = "relative w-full overflow-hidden") {
@@ -633,7 +638,7 @@ private fun Container.sectionHowToGetStarted() {
 }
 
 private fun Container.sectionRegisterAsHost() {
-    div(className="relative z-10 mt-20 md:mt-36") {
+    div(className="relative z-10 mt-[108px] md:mt-36") {
         id = "register-as-a-host"
         h2(className = "text-[28px] md:text-[64px] font-bold leading-[120%] max-md:text-center") {
             + "Ready to Earn "
