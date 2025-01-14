@@ -693,34 +693,75 @@ private fun Container.showDialogReserveShuttle() {
 }
 
 private fun Container.footerWagmi() {
-    div(className="flex max-md:flex-col justify-between mb-8 md:mt-36 min-[1537px]:mt-72 pt-8 border-t border-[#3A2E47] text-white") {
+    div(className = "flex max-md:flex-col justify-between mb-8 md:mt-36 min-[1537px]:mt-72 pt-8 border-t border-[#3A2E47] text-white") {
         id = "footer-wagmi"
         div(className = "flex flex-col justify-between") {
             image(src = "/images/logo_rentality_wagmi.svg")
             div("©2025 by Rentality LLC", className = "max-md:hidden")
         }
         footerLegalMattersWagmi()
+        footerStoresBlockWagmi()
         footerInfoBlockWagmi()
     }
 }
 
 private fun Container.footerLegalMattersWagmi() {
     div(className = "relative z-0 flex flex-col max-md:items-center max-md:mt-6") {
-        link(label = "Legal matters", url = Pages.LEGAL_MATTERS.url, target = "_blank", className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline")
-        link(label = "Terms of service", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.TERMS.value}", target = "_blank", className = "mt-3 pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
-        link(label = "Cancellation policy", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.CANCELLATION.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
-        link(label = "Prohibited uses", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PROHIBITEDUSES.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
-        link(label = "Privacy policy", url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PRIVACY.value}", target = "_blank", className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline")
+        link(
+            label = "Legal matters",
+            url = Pages.LEGAL_MATTERS.url,
+            target = "_blank",
+            className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline"
+        )
+        link(
+            label = "Terms of service",
+            url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.TERMS.value}",
+            target = "_blank",
+            className = "mt-3 pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline"
+        )
+        link(
+            label = "Cancellation policy",
+            url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.CANCELLATION.value}",
+            target = "_blank",
+            className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline"
+        )
+        link(
+            label = "Prohibited uses",
+            url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PROHIBITEDUSES.value}",
+            target = "_blank",
+            className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline"
+        )
+        link(
+            label = "Privacy policy",
+            url = "${Pages.LEGAL_MATTERS.url}/${ELegalMatters.PRIVACY.value}",
+            target = "_blank",
+            className = "pb-1.5 cursor-pointer text-base font-['Montserrat',Arial,sans-serif] hover:underline"
+        )
+    }
+}
+
+private fun Container.footerStoresBlockWagmi() {
+    div(className = "relative z-0 flex flex-col items-center mt-4") {
+        link("", url = "https://apps.apple.com/ua/app/rentality/id6736899320") {
+            image(src = "/images/marketplace/ic_appstore.svg", className = "w-[200px]")
+        }
+        link("", url = "https://play.google.com/store/apps/details?id=xyz.rentality.rentality") {
+            image(src = "/images/marketplace/ic_google_play.png", className = "w-[200px] mt-4")
+        }
     }
 }
 
 private fun Container.footerInfoBlockWagmi() {
     div(className = "relative z-0 flex flex-col max-md:mt-8") {
         div(className = "md:ml-auto") {
-            link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
+            link(
+                "",
+                url = "mailto:info@rentality.xyz",
+                className = "max-md:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal text-end"
+            ) {
                 div("info@rentality.xyz")
             }
-            div(className = "flex flex-col mt-1.5 max-[560px]:items-center") {
+            div(className = "flex flex-col mt-1.5 max-md:items-center items-end") {
                 div(className = "flex") {
                     link("", url = "https://www.linkedin.com/company/rentalitycorp/?viewAsMember=true") {
                         image(src = "/images/social/linkedin-logo.svg", className = "w-[30px]")
@@ -735,7 +776,7 @@ private fun Container.footerInfoBlockWagmi() {
                         image(src = "/images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                 }
-                div(className = "flex") {
+                div(className = "flex items-center") {
                     link("", url = "https://mirror.xyz/0x263660F0ab0014e956d42f85DccD918bBa2Df587") {
                         image(src = "/images/social/mirror-logo.svg", className = "w-[30px]")
                     }
@@ -747,6 +788,9 @@ private fun Container.footerInfoBlockWagmi() {
                     }
                     link("", url = "https://medium.com/@rentality") {
                         image(src = "/images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://www.youtube.com/@Rentality_xyz") {
+                        image(src = "/images/social/youtube-logo.png", className = "ml-1.5 w-[28px]")
                     }
                 }
             }
@@ -760,9 +804,9 @@ private fun Container.footerInfoBlockWagmi() {
                 setAttribute("data-style-width", "100%")
 
                 link(
-                        label = "Trustpilot",
-                        url = "https://www.trustpilot.com/review/rentality.xyz",
-                        target = "_blank"
+                    label = "Trustpilot",
+                    url = "https://www.trustpilot.com/review/rentality.xyz",
+                    target = "_blank"
                 )
             }
         }
