@@ -45,7 +45,9 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default 
 
         root("kvapp") {
             main(className = "bg-[$MAIN_COLOR_BG] overflow-hidden").bind(ConduitManager.conduitStore) { state ->
-                header()
+                if (state.page != Pages.LIFETIME_REWARDS) {
+                    header()
+                }
 
                 when (state.page) {
                     Pages.HOME -> {
@@ -105,8 +107,13 @@ class App : Application(), CoroutineScope by CoroutineScope(Dispatchers.Default 
                         wagmi2025Page()
                         Pace.stop()
                     }
+                    Pages.LIFETIME_REWARDS -> {
+                        lifetimeRewardsPage()
+                        Pace.stop()
+                    }
                 }
-                if (state.page != Pages.WAGMI_2025) {
+                if (!(state.page == Pages.WAGMI_2025
+                        || state.page == Pages.LIFETIME_REWARDS)) {
                     footer()
                 }
             }

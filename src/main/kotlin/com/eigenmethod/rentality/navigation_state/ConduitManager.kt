@@ -132,4 +132,9 @@ object ConduitManager : CoroutineScope by CoroutineScope(Dispatchers.Default + S
         val state = conduitStore.getState().copy(page = Pages.WAGMI_2025)
         conduitStore.dispatch(ConduitAction.SetConduitState(state))
     }
+
+    fun lifetimeRewardsPage() {
+        val state = conduitStore.getState().copy(page = Pages.LIFETIME_REWARDS)
+        conduitStore.dispatch(ConduitAction.SetConduitState(state))
+    }
 }

@@ -90,6 +90,12 @@ fun Navigo.initialize(): Navigo {
                         ConduitManager.wagmi2025Page()
                     }
             )
+            .on(
+                    Pages.LIFETIME_REWARDS.url,
+                    { _ ->
+                        ConduitManager.lifetimeRewardsPage()
+                    }
+            )
 
 
 }
