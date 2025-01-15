@@ -761,8 +761,8 @@ private fun Container.footerInfoBlockWagmi() {
             ) {
                 div("info@rentality.xyz")
             }
-            div(className = "flex flex-col mt-1.5 max-md:items-center items-end") {
-                div(className = "flex") {
+            div(className = "flex flex-col mt-1.5 max-md:items-center") {
+                div(className = "flex gap-5") {
                     link("", url = "https://www.linkedin.com/company/rentalitycorp/?viewAsMember=true") {
                         image(src = "/images/social/linkedin-logo.svg", className = "w-[30px]")
                     }
@@ -772,30 +772,33 @@ private fun Container.footerInfoBlockWagmi() {
                     link("", url = "https://discord.gg/rentality") {
                         image(src = "/images/social/discord-logo.svg", className = "ml-1.5 w-[30px]")
                     }
-                    link("", url = "https://t.me/rentality_xyz") {
-                        image(src = "/images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
-                    }
+
                 }
-                div(className = "flex items-center") {
+                div(className = "flex gap-5") {
+                    link("", url = "https://t.me/rentality_xyz") {
+                        image(src = "/images/social/telegram-logo.svg", className = "w-[30px]")
+                    }
                     link("", url = "https://mirror.xyz/0x263660F0ab0014e956d42f85DccD918bBa2Df587") {
-                        image(src = "/images/social/mirror-logo.svg", className = "w-[30px]")
+                        image(src = "/images/social/mirror-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://warpcast.com/rentality") {
                         image(src = "/images/social/warpcast-logo.svg", className = "ml-1.5 w-[30px]")
                     }
+                }
+                div(className = "flex gap-5") {
                     link("", url = "https://www.instagram.com/rentality_/") {
-                        image(src = "/images/social/instagram-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/instagram-logo.svg", className = "w-[30px]")
                     }
                     link("", url = "https://medium.com/@rentality") {
                         image(src = "/images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://www.youtube.com/@Rentality_xyz") {
-                        image(src = "/images/social/youtube-logo.png", className = "ml-1.5 w-[28px]")
+                        image(src = "/images/social/youtube-logo.png", className = "ml-1.5 w-[30px]")
                     }
                 }
             }
         }
-        div(className = "md:absolute w-[250px] bottom-0 right-[-34px] max-md:m-auto max-md:mt-8") {
+        div(className = "md:absolute w-[250px] bottom-[-16px] right-[-34px] max-md:m-auto max-md:mt-8") {
             div(className = "trustpilot-widget") {
                 setAttribute("data-locale", "en-US")
                 setAttribute("data-template-id", "56278e9abfbbba0bdcd568bc")
