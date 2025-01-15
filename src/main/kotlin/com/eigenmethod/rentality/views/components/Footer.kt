@@ -24,12 +24,13 @@ private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 
 fun Container.footer() {
-    footer(className="bg-[url('/images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[600px] min-[560px]:h-[450px] lg:h-[290px]") {
+    footer(className="bg-[url('/images/bg-gradient-flip.jpg')] bg-cover bg-no-repeat bg-center bg-scroll relative h-[800px] min-[560px]:h-[450px] lg:h-[290px]") {
         image(src = "/images/red-generic-sport-ca.png", className="absolute bottom-0 left-0")
 //        div("©2024 by Rentality LLC", className = "absolute bottom-0 left-4 sm:hidden text-white font-['Montserrat',Arial,sans-serif]")
         div(className = "text-white max-w-[$MAX_WITH_CONTENT] mx-auto $CONTAINER_PX flex max-[560px]:flex-col flex-row h-full") {
             id = "footer-content"
             footerLegalMatters()
+            footerStoresBlock()
             footerInfoBlock()
 //            footerCommunicBlock()
         }
@@ -37,14 +38,14 @@ fun Container.footer() {
 }
 
 fun Container.footerInfoBlock() {
-    div(className = "z-0 flex flex-col lg:pt-[40px] max-lg:mx-auto lg:ml-auto w-max h-full") {
+    div(className = "z-0 flex flex-col lg:pt-[40px] w-max h-full max-[560px]:mx-auto") {
         image(src = "/images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
         div {
             link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
                 div("info@rentality.xyz")
             }
             div(className = "flex flex-col mt-1.5 max-[560px]:items-center") {
-                div(className = "flex") {
+                div(className = "flex gap-5") {
                     link("", url = "https://www.linkedin.com/company/rentalitycorp/?viewAsMember=true") {
                         image(src = "/images/social/linkedin-logo.svg", className = "w-[30px]")
                     }
@@ -54,31 +55,45 @@ fun Container.footerInfoBlock() {
                     link("", url = "https://discord.gg/rentality") {
                         image(src = "/images/social/discord-logo.svg", className = "ml-1.5 w-[30px]")
                     }
-//                    link("", url = "mailto:info@rentality.xyz", className = "lg:hidden") {
-//                        image(src = "/images/ic-email-50.png", className = "ml-1.5 w-[30px] mt-0.5")
-//                    }
-                    link("", url = "https://t.me/rentality_xyz") {
-                        image(src = "/images/social/telegram-logo.svg", className = "ml-1.5 w-[30px]")
-                    }
+
                 }
-                div(className = "flex") {
+                div(className = "flex gap-5") {
+                    link("", url = "https://t.me/rentality_xyz") {
+                        image(src = "/images/social/telegram-logo.svg", className = "w-[30px]")
+                    }
                     link("", url = "https://mirror.xyz/0x263660F0ab0014e956d42f85DccD918bBa2Df587") {
-                        image(src = "/images/social/mirror-logo.svg", className = "w-[30px]")
+                        image(src = "/images/social/mirror-logo.svg", className = "ml-1.5 w-[30px]")
                     }
                     link("", url = "https://warpcast.com/rentality") {
                         image(src = "/images/social/warpcast-logo.svg", className = "ml-1.5 w-[30px]")
                     }
+                }
+                div(className = "flex gap-5") {
                     link("", url = "https://www.instagram.com/rentality_/") {
-                        image(src = "/images/social/instagram-logo.svg", className = "ml-1.5 w-[30px]")
+                        image(src = "/images/social/instagram-logo.svg", className = "w-[30px]")
                     }
                     link("", url = "https://medium.com/@rentality") {
                         image(src = "/images/social/medium-logo.svg", className = "ml-1.5 w-[30px]")
+                    }
+                    link("", url = "https://www.youtube.com/@Rentality_xyz") {
+                        image(src = "/images/social/youtube-logo.png", className = "ml-1.5 w-[30px]")
                     }
                 }
             }
         }
         div("©2024 by Rentality LLC", className = "z-0 mt-auto font-['Montserrat',Arial,sans-serif]")
 
+    }
+}
+
+private fun Container.footerStoresBlock() {
+    div(className = "relative z-0 flex flex-col items-center min-[560px]:mt-12 mt-[-52px] mb-4 mx-auto px-2") {
+        link("", url = "https://apps.apple.com/ua/app/rentality/id6736899320") {
+            image(src = "/images/marketplace/ic_appstore.svg", className = "w-[200px]")
+        }
+        link("", url = "https://play.google.com/store/apps/details?id=xyz.rentality.rentality") {
+            image(src = "/images/marketplace/ic_google_play.png", className = "w-[200px] mt-4")
+        }
     }
 }
 
@@ -135,7 +150,7 @@ fun Container.footerCommunicBlock() {
 }
 
 fun Container.footerLegalMatters() {
-    div(className = "relative z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-2/3 sm:h-full") {
+    div(className = "relative z-0 flex flex-col pt-[30px] lg:pt-[40px] max-lg:mx-auto lg:ml-[540px] min-[1536px]:ml-[540px] min-[1720px]:ml-auto w-max h-2/3 sm:h-full max-[560px]:items-center") {
         link(label = "Legal matters", url = "", className = "pb-1 cursor-pointer text-xl font-semibold font-['Montserrat',Arial,sans-serif] hover:underline") {
             onClick {
                 //делаем через onClick, а не через url = "", чтобы не перегружалась страница
@@ -179,7 +194,7 @@ fun Container.footerLegalMatters() {
 //                }
 //            }
 //        }
-        div(className = "absolute w-[250px] left-[-50px] bottom-4") {
+        div(className = "min-[560px]:absolute w-[250px] left-[-50px] bottom-4") {
             div(className = "trustpilot-widget") {
                 setAttribute("data-locale", "en-US")
                 setAttribute("data-template-id", "56278e9abfbbba0bdcd568bc")
