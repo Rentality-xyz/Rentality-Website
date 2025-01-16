@@ -102,10 +102,10 @@ fun Container.lifetimeRewardsPage() {
                 }
                 div(className = "mt-7 xl:mt-9 w-full flex max-xl:flex-col max-xl:w-[200px] max-xl:mx-auto max-xl:text-center items-center justify-between text-sm $min_full_design:text-lg font-medium") {
                     p(className = "text-[#FFFFFF59]") {
-                        span(content = "Learn more", className = "text-[#24D8D4] underline cursor-pointer")
+                        link("Learn more", url = "https://medium.com/@rentality/rentality-lifetime-rewards-program-16f61b0e27f9", className = "text-[#24D8D4] underline cursor-pointer")
                         + " about the Lifetime Rewards Program"
                     }
-                    p(content = "Terms of the Giveaway", className = "text-[#24D8D4] underline cursor-pointer max-xl:mt-4")
+                    link("Terms of the Giveaway", url = "https://medium.com/@rentality/terms-of-the-giveaway-2ff6d17efa11", className = "text-[#24D8D4] underline cursor-pointer max-xl:mt-4")
                 }
             }
         }
