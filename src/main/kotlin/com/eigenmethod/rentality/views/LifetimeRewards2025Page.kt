@@ -17,7 +17,7 @@ import kotlinx.dom.addClass
 private const val min_full_design = "min-[1860px]"
 
 fun Container.lifetimeRewardsPage() {
-    div(className = "w-full max-w-[1920px] bg-[url('/images/img_bg_main_lifetime_rewards_mob.png')] xl:bg-[url('/images/img_bg_main_lifetime_rewards.png')] bg-cover bg-no-repeat xl:bg-center font-['Montserrat',Arial,sans-serif]") {
+    div(className = "w-full h-full mx-auto max-w-[1920px] bg-[url('/images/img_bg_main_lifetime_rewards_mob.png')] xl:bg-[url('/images/img_bg_main_lifetime_rewards.png')] bg-cover bg-no-repeat xl:bg-center font-['Montserrat',Arial,sans-serif]") {
         div(className = "mx-auto flex flex-wrap flex-col max-xl:px-4 xl:flex-row xl:max-w-[86%]") {
             id = "content-lifetime-rewards"
             div(className = "flex items-center w-full h-[$HEADER_LINE_H] xl:h-[140px]").bind(isActiveMenuMob) {
@@ -117,14 +117,6 @@ private fun Container.menuLifetimeRewards() {
         id = "menu-lifetime-rewards"
         div(className = "flex w-full items-center justify-between") {
             div(className = "flex") {
-                link(label = "About program", url = "", className = "cursor-pointer block mr-6 hover:underline") {
-                    onClick {
-                        it.preventDefault()
-                        ConduitManager.redirectPage(Pages.LIFETIME_REWARDS)
-                        ConduitManager.redirectUrl("${Pages.LIFETIME_REWARDS.url}/#about-program")
-                        Pace.stop()
-                    }
-                }
                 link(label = "Launch the App", url = "https://app.rentality.xyz/guest", className = "cursor-pointer block mr-6 hover:underline")
                 link(label = "Create profile", url = "https://app.rentality.xyz/guest/profile", className = "cursor-pointer block hover:underline")
             }
@@ -158,17 +150,6 @@ private fun Container.menuMobLifetimeRewards() {
                     imgMenu = "/images/ic-menu-burge-white-20.svg"
                     isActiveMenuMob.value = false
                 }
-            }
-        }
-        link(label = "About program", url = "") {
-            onEvent {
-//                click = { e ->
-//                    e.preventDefault()
-//                    ConduitManager.redirectPage(Pages.HOME)
-//                    hideMenuMobLifetimeRewards()
-//                    ConduitManager.redirectUrl("${Pages.LIFETIME_REWARDS.url}/#reserve-shuttle")
-//                    Pace.stop()
-//                }
             }
         }
         link(label = "Launch the App", url = "https://app.rentality.xyz/guest") {
