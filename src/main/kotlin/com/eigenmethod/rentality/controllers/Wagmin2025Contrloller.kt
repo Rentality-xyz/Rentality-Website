@@ -7,7 +7,7 @@ import kotlinx.coroutines.await
 import kotlinx.serialization.json.Json
 
 suspend fun sendWagmi2025DataToGoogleTable(data: Wagmi2025Data) {
-    val url = "https://script.google.com/macros/s/AKfycbzGPQQIYN_kJ34HQNyvPej-L4y6TXqV0VFB6gw3K1d8l2VidzzMO0VLav8YZRCKovuw/exec?GoogleSheetId=1x5Zu_7JyaiaXk7mZ8FXXZ09n1YnRb6zbtUz7iLpoGzM&first_name=${data.firstName}&last_name=${data.lastName}&company=${data.company}&hotel=${data.address}&email=${data.email}&phone=${data.phone}&date=${data.date}" // Замените на ваш URL
+    val url = "https://script.google.com/macros/s/AKfycbzGPQQIYN_kJ34HQNyvPej-L4y6TXqV0VFB6gw3K1d8l2VidzzMO0VLav8YZRCKovuw/exec?GoogleSheetId=1x5Zu_7JyaiaXk7mZ8FXXZ09n1YnRb6zbtUz7iLpoGzM&first_name=${data.firstName}&last_name=${data.lastName}&company=${data.company}&pick_up_location=${data.pickUpLocation}&email=${data.email}&phone=${data.phone}&date_time=${data.date}" // Замените на ваш URL
     val response = window.fetch(url).await()
     // Преобразование ответа в формат JSON
     val json = response.json().await()

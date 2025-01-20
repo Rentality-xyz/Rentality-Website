@@ -30,10 +30,11 @@ private var isInputMainError = ObservableValue(false)
 private var isInputFirstNameError = ObservableValue(false)
 private var isInputLastNameError = ObservableValue(false)
 private var isInputCompanyNameError = ObservableValue(false)
-private var isInputAddressError = ObservableValue(false)
+private var isInputPickUpLocationError = ObservableValue(false)
 private var isInputEmailError = ObservableValue(false)
 private var isInputPhoneError = ObservableValue(false)
 private var isInputDateError = ObservableValue(false)
+private var isInputDestinationError = ObservableValue(false)
 private var isBtnSocialTwitterClicked = ObservableValue(false)
 private var isBtnSocialTelegramClicked = ObservableValue(false)
 private var isBtnSocialDiscoedClicked = ObservableValue(false)
@@ -51,10 +52,11 @@ private const val cssBtnSubmitDisabled = "$cssBtnSubmitMain bg-[#CCCCCC]"
 private var formInputFirstName: String = ""
 private var formInputLastName: String = ""
 private var formInputCompanyName: String = ""
-private var formInputAddressName: String = ""
+private var formInputPickUpLocation: String = ""
 private var formInputEMail: String = ""
 private var formInputPhone: String = ""
 private var formInputDateShuttle: String = ""
+private var formInputDestinationShuttle: String = ""
 
 
 
@@ -94,15 +96,15 @@ fun Container.wagmi2025Page() {
     div(className = "relative w-full font-['Montserrat',Arial,sans-serif]") {
         div(className="mt-8 mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
             sectionRentalityApp()
+            sectionBecomeHost()
         }
         image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-200px]")
         image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute top-[70px] left-0 w-full")
     }
 
     div(className = "w-full md:bg-[url('/images/bg_avto_103_wagmi.png')] bg-cover bg-no-repeat bg-center font-['Montserrat',Arial,sans-serif]") {
-        div(className="mt-[256px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
-            sectionBecomeHost()
-            div(className = "mt-20 md:mt-44 text-[28px] md:text-[64px] md:leading-[76px] w-full text-center font-bold") {
+        div(className="mt-[76px] md:mt-[176px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] text-white") {
+            div(className = "text-[28px] md:text-[64px] md:leading-[76px] w-full text-center font-bold") {
                 + "Why List Your "
                 br(className = "max-md:hidden")
                 + "Car on Rentality?"
@@ -205,16 +207,16 @@ private fun Container.sectionReserveShuttle() {
                         }
                     }
                     div {
-                        div().bind(isInputAddressError) {
-                            label("*Address", forId = "wagmi_address", className = if (isInputAddressError.value) "text-red-600" else "")
+                        div().bind(isInputPickUpLocationError) {
+                            label("*Pick-up Location", forId = "wagmi_pick_up_location", className = if (isInputPickUpLocationError.value) "text-red-600" else "")
                         }
                         textInput(type = InputType.TEXT, className = cssInput) {
-                            id = "wagmi_address"
-                            placeholder = "Enter your Address"
+                            id = "wagmi_pick_up_location"
+                            placeholder = "Enter Pick-up Location"
                             onInput {
                                 it.preventDefault()
-                                isInputAddressError.value = false
-                                formInputAddressName = this.value.orEmpty()
+                                isInputPickUpLocationError.value = false
+                                formInputPickUpLocation = this.value.orEmpty()
                             }
                         }
                     }
@@ -260,15 +262,29 @@ private fun Container.sectionReserveShuttle() {
                 div(className = "flex flex-col md:grid grid-cols-2 gap-12 pb-5") {
                     div {
                         div().bind(isInputDateError) {
-                            label("*Date of Shuttle service", forId = "wagmi_date_shuttle", className = if (isInputDateError.value) "text-red-600" else "")
+                            label("*Date and Time of Shuttle service", forId = "wagmi_date_time_shuttle", className = if (isInputDateError.value) "text-red-600" else "")
                         }
-                        textInput(type = InputType.DATE, className = cssInput) {
-                            id = "wagmi_date_shuttle"
-                            placeholder = "00/00/0000"
+                        textInput(type = InputType.DATETIME_LOCAL, className = cssInput) {
+                            id = "wagmi_date_time_shuttle"
                             onInput {
                                 it.preventDefault()
                                 isInputDateError.value = false
                                 formInputDateShuttle = this.value.orEmpty()
+                            }
+                        }
+                    }
+
+                    div {
+                        div().bind(isInputDestinationError) {
+                            label("*Destination", forId = "wagmi_destination", className = if (isInputDestinationError.value) "text-red-600" else "")
+                        }
+                        textInput(type = InputType.TEXT, className = cssInput) {
+                            id = "wagmi_destination"
+                            placeholder = "Enter Destination"
+                            onInput {
+                                it.preventDefault()
+                                isInputDestinationError.value = false
+                                formInputDestinationShuttle = this.value.orEmpty()
                             }
                         }
                     }
@@ -363,10 +379,10 @@ private fun Container.sectionReserveShuttle() {
                                 isInputMainError.value = true
                             }
 
-                            if (formInputAddressName.isEmpty()) {
-                                val inputElement = document.getElementById("wagmi_address") as? HTMLInputElement
+                            if (formInputPickUpLocation.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_pick_up_location") as? HTMLInputElement
                                 inputElement?.focus()
-                                isInputAddressError.value = true
+                                isInputPickUpLocationError.value = true
                                 isInputMainError.value = true
                             }
 
@@ -387,9 +403,16 @@ private fun Container.sectionReserveShuttle() {
                             }
 
                             if (!isValidShuttleDate(formInputDateShuttle)) {
-                                val inputElement = document.getElementById("wagmi_date_shuttle") as? HTMLInputElement
+                                val inputElement = document.getElementById("wagmi_date_time_shuttle") as? HTMLInputElement
                                 inputElement?.focus()
                                 isInputDateError.value = true
+                                isInputMainError.value = true
+                            }
+
+                            if (formInputPickUpLocation.isEmpty()) {
+                                val inputElement = document.getElementById("wagmi_destination") as? HTMLInputElement
+                                inputElement?.focus()
+                                isInputDestinationError.value = true
                                 isInputMainError.value = true
                             }
 
@@ -402,7 +425,7 @@ private fun Container.sectionReserveShuttle() {
                                             firstName = formInputFirstName,
                                             lastName = formInputLastName,
                                             company = formInputCompanyName,
-                                            address = formInputAddressName,
+                                            pickUpLocation = formInputPickUpLocation,
                                             email = formInputEMail,
                                             phone = formInputPhone,
                                             date = formInputDateShuttle)
@@ -412,7 +435,7 @@ private fun Container.sectionReserveShuttle() {
                             formInputFirstName = ""
                             formInputLastName = ""
                             formInputCompanyName = ""
-                            formInputAddressName = ""
+                            formInputPickUpLocation = ""
                             formInputEMail = ""
                             formInputPhone = ""
                             formInputDateShuttle = ""
