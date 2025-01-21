@@ -24,7 +24,7 @@ inline fun <reified T> T?.orIfNull(input: () -> T): T {
 
 // Проверка корректности введённой даты Wagmi
 fun isValidShuttleDate(dateTime: String): Boolean {
-    val validDates = setOf("2025-01-22", "2025-01-23", "2025-01-24")
+    val validDates = setOf("2025-01-23", "2025-01-24")
     val date = dateTime.split("T").firstOrNull() // Получаем только дату до T (2025-01-23T10:30)
     return date in validDates
 }

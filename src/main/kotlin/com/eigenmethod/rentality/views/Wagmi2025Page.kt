@@ -155,7 +155,7 @@ private fun Container.sectionReserveShuttle() {
                 br()
                 + "service is available for January"
                 br()
-                + "22, 23, and 24, 2025."
+                + "23, and 24, 2025."
             }
         }
         form(className = "mt-8 text-base md:text-xl font-medium") {
