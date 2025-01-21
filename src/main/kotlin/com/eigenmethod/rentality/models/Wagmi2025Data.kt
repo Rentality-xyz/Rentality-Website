@@ -7,5 +7,6 @@ data class Wagmi2025Data(
         val pickUpLocation: String,
         val email: String,
         val phone: String,
-        val date: String
+        val date: String,
+        val destination: String
 )

@@ -98,7 +98,7 @@ fun Container.wagmi2025Page() {
             sectionRentalityApp()
             sectionBecomeHost()
         }
-        image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-200px]")
+        image(src = "/images/img_phone_wagmi.png", className = "max-md:hidden absolute top-[-310px] right-[-2%] min-[1920px]:right-[5%]")
         image(src = "/images/img_phone_wagmi_mob.png", className = "md:hidden absolute top-[70px] left-0 w-full")
     }
 
@@ -428,7 +428,8 @@ private fun Container.sectionReserveShuttle() {
                                             pickUpLocation = formInputPickUpLocation,
                                             email = formInputEMail,
                                             phone = formInputPhone,
-                                            date = formInputDateShuttle)
+                                            date = formInputDateShuttle,
+                                            destination = formInputDestinationShuttle)
                             )
 
                             // Очистка данных формы
@@ -439,16 +440,18 @@ private fun Container.sectionReserveShuttle() {
                             formInputEMail = ""
                             formInputPhone = ""
                             formInputDateShuttle = ""
+                            formInputDestinationShuttle = ""
 
                             // Очистка содержимого текстовых полей
                             val inputs = listOf(
                                     "wagmi_first_name",
                                     "wagmi_last_name",
                                     "wagmi_company_name",
-                                    "wagmi_address",
+                                    "wagmi_pick_up_location",
                                     "wagmi_email",
                                     "wagmi_phone",
-                                    "wagmi_date_shuttle"
+                                    "wagmi_date_time_shuttle",
+                                    "wagmi_destination"
                             )
 
                             inputs.forEach { id ->
