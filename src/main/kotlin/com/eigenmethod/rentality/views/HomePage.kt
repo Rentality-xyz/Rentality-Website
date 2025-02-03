@@ -60,10 +60,10 @@ fun Container.homePage() {
 //    image(src = "/images/bg_arrows_from_logo_zoya.png", className = "max-lg:hidden absolute top-[4200px] left-0 max-w-[332px]")
     div(className="max-lg:pt-0 pt-[110px] max-lg:pb-[60px] pb-[110px] mx-auto $CONTAINER_PX max-w-[$MAX_WITH_CONTENT] bg-[$MAIN_COLOR_BG] text-white") {
         id = "home-page-content"
-        image(src = "/images/how_it_work_web3.jpg", alt = "How works platform", className = "max-lg:hidden") {
+        image(src = "/images/how_it_works_web3.png", alt = "How works platform", className = "max-lg:hidden") {
             id = "how_it_work"
         }
-        image(src = "/images/how_it_work_web3_mob.jpg", alt = "How works platform", className = "pt-14 lg:hidden") {
+        image(src = "/images/how_it_works_web3_mob.png", alt = "How works platform", className = "pt-14 lg:hidden") {
             id = "how_it_work_mob"
         }
 
@@ -193,44 +193,64 @@ private fun Container.builtOnSection() {
         h2("Built on", className = "md:mb-8 pt-8 md:pt-[110px] text-center text-[40px] lg:text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
             id = "built-on"
         }
-        div(className = "flex") {
+        div(className = "flex max-lg:hidden") {
             div (className = "mx-auto z-10") {
                 image(src = "/images/blockchain/ic_base.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_ethereum.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_polygon.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_linea.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_arbitrum.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_avalanche.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
-            }
-            div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_op.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
             }
             div (className = "mx-auto z-10") {
                 image(src = "/images/blockchain/ic_opbnb.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
             }
             div (className = "mx-auto z-10") {
-                image(src = "/images/blockchain/ic_zktoken.svg", className = "m-auto h-[38px] lg:h-[68px]")
-
+                image(src = "/images/blockchain/ic_layerzero.svg", className = "m-auto h-[38px] lg:h-[68px]")
+            }
+            div (className = "mx-auto z-10") {
+                image(src = "/images/blockchain/akave_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
+            }
+            div (className = "mx-auto z-10") {
+                image(src = "/images/partners/dimo_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
+            }
+            div (className = "mx-auto z-10") {
+                image(src = "/images/partners/ic_metamask.svg", className = "m-auto h-[38px] lg:h-[68px]")
+            }
+            div (className = "mx-auto z-10") {
+                image(src = "/images/partners/ic_coinbase.svg", className = "m-auto h-[38px] lg:h-[68px]")
+            }
+            div (className = "mx-auto z-10") {
+                image(src = "/images/partners/privy_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
             }
         }
+        div(className = "flex flex-col lg:hidden") {
+            div(className = "flex") {
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/blockchain/ic_base.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/blockchain/ic_opbnb.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/blockchain/ic_layerzero.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/blockchain/akave_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+            }
+            div(className = "flex mt-8") {
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/partners/dimo_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/partners/ic_metamask.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/partners/ic_coinbase.svg", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+                div (className = "mx-auto z-10") {
+                    image(src = "/images/partners/privy_logo.png", className = "m-auto h-[38px] lg:h-[68px]")
+                }
+            }
+
+        }
+
     }
 }
 
