@@ -190,7 +190,7 @@ private fun Container.partnersSection() {
 private fun Container.builtOnSection() {
     div(className = "w-full") {
         id = "built-on-section"
-        h2("Built on", className = "md:mb-8 pt-8 md:pt-[110px] text-center text-[40px] lg:text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
+        h2("Built on", className = "mb-4 md:mb-8 pt-8 md:pt-[110px] text-center text-[40px] lg:text-[48px] font-['Montserrat',Arial,sans-serif] font-bold") {
             id = "built-on"
         }
         div(className = "flex max-lg:hidden") {
