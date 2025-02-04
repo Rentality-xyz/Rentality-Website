@@ -29,7 +29,7 @@ fun Container.menuMain() {
 
                 // Dropdown content
                 div(className = "absolute hidden group-hover:block bg-[#1E1E30] rounded-lg shadow-md py-2 px-4 z-10 w-[150px]") {
-                    link(label = "How it work", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
+                    link(label = "How it works", url = "", className = "cursor-pointer block mb-2 text-base font-['Montserrat',Arial,sans-serif] hover:underline") {
                         onClick {
                             it.preventDefault()
                             ConduitManager.redirectPage(Pages.HOME)
@@ -119,7 +119,7 @@ fun Container.menuMain() {
 fun Container.menuMob() {
     nav(className = "xl:hidden duration-500 fixed top-[-100%] right-0 w-full bg-[#8222DD] z-[100] flex flex-col items-start space-y-4 pl-6 py-2") {
         id = "menu-mob"
-        link(label = "How it work", url = "#how_it_work", className = "font-['Montserrat',Arial,sans-serif]") {
+        link(label = "How it works", url = "#how_it_work", className = "font-['Montserrat',Arial,sans-serif]") {
             onClick {
                 it.preventDefault()
                 hideMenuMob()
