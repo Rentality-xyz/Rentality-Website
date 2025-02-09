@@ -81,7 +81,7 @@ fun Container.footerInfoBlock() {
                 }
             }
         }
-        div("©2024 by Rentality LLC", className = "z-0 mt-auto font-['Montserrat',Arial,sans-serif]")
+        div("©2025 by Rentality LLC", className = "z-0 mt-auto font-['Montserrat',Arial,sans-serif]")
 
     }
 }
