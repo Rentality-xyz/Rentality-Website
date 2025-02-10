@@ -13,7 +13,6 @@ import io.kvision.core.onInput
 import io.kvision.form.form
 import io.kvision.form.text.textInput
 import io.kvision.html.*
-import io.kvision.types.LocalDateTime
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
