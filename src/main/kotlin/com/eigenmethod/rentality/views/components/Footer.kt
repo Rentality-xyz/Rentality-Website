@@ -13,10 +13,12 @@ import io.kvision.core.onInput
 import io.kvision.form.form
 import io.kvision.form.text.textInput
 import io.kvision.html.*
+import io.kvision.types.LocalDateTime
 import kotlinx.browser.window
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.launch
+import kotlin.js.Date
 
 private val coroutine = CoroutineScope(window.asCoroutineDispatcher())
 private var formInputName: String = ""
@@ -38,6 +40,9 @@ fun Container.footer() {
 }
 
 fun Container.footerInfoBlock() {
+
+    val currentYear = Date().getFullYear()
+
     div(className = "z-0 flex flex-col lg:pt-[40px] w-max h-full max-[560px]:mx-auto") {
         image(src = "/images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
         div {
@@ -81,7 +86,7 @@ fun Container.footerInfoBlock() {
                 }
             }
         }
-        div("©2025 by Rentality LLC", className = "z-0 mt-auto font-['Montserrat',Arial,sans-serif]")
+        div("©${currentYear} by Rentality LLC", className = "z-0 mt-auto font-['Montserrat',Arial,sans-serif]")
 
     }
 }
