@@ -1,9 +1,6 @@
 package com.eigenmethod.rentality.views.components
 
-import com.eigenmethod.rentality.constants.CONTAINER_PX
-import com.eigenmethod.rentality.constants.HEADER_LINE_H
-import com.eigenmethod.rentality.constants.MAIN_COLOR_BG
-import com.eigenmethod.rentality.constants.MAX_WITH_CONTENT
+import com.eigenmethod.rentality.constants.*
 import com.eigenmethod.rentality.models.UserStatus
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.ConduitState
@@ -175,7 +172,7 @@ private fun Container.headWagmi2025Page() {
                     p(content = "*the code is active for 6 months from the start of the conference", className = "mt-6 text-base md:text-xl font-medium")
                 }
             }
-            link(label = "", url = "https://app.rentality.xyz/guest", className = "max-md:w-full") {
+            link(label = "", url = "$RENTALITY_APP_URL/guest", className = "max-md:w-full") {
                 button(text = "Rent a Car", className = "flex max-md:mt-6 items-center justify-center bg-white rounded-full max-md:w-full md:w-[352px] h-[60px] text-xl text-[#6600CC] font-['Montserrat',Arial,sans-serif] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                     image(src = "/images/maki_car.svg", className = "ml-4")
                 }
@@ -212,13 +209,13 @@ private fun Container.breadcrumbs(state: ConduitState) {
 
 private fun Container.buttonToPrototype() {
     div(className = "xl:flex xl:items-center") {
-        link(label = "", url = "https://app.rentality.xyz/guest") {
+        link(label = "", url = "$RENTALITY_APP_URL/guest") {
             button(text = "", className= "border-gradient items-center px-2 w-[240px] h-[50px] rounded-[10px] text-xl font-['Montserrat',Arial,sans-serif] font-semibold mr-[10px]") {
                 + "Rent a car"
                 span(content = "→", className = "text-[#7F5EE7] ml-3 mb-0.5")
             }
         }
-        link(label = "", url = "https://app.rentality.xyz/host") {
+        link(label = "", url = "$RENTALITY_APP_URL/host") {
             button(text = "", className= "border-gradient items-center px-2 w-[240px] h-[50px] rounded-[10px] text-xl font-['Montserrat',Arial,sans-serif] font-semibold max-xl:mt-4") {
                 + "Become a Host"
                 span(content = "→", className = "text-[#7F5EE7] ml-3 mb-0.5")

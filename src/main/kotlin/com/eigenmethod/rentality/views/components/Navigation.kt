@@ -1,6 +1,7 @@
 package com.eigenmethod.rentality.views.components
 
 import com.eigenmethod.rentality.constants.HEADER_LINE_H
+import com.eigenmethod.rentality.constants.RENTALITY_DEMO_URL
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.Pages
 import io.kvision.core.Container
@@ -108,7 +109,7 @@ fun Container.menuMain() {
             link(label = "", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform") {
                 button(text = "Join Waitlist ●", className = "inline-flex items-center border px-5 hover:text-black hover:bg-white rounded-full text-sm h-[40px] font-['Montserrat',Arial,sans-serif] font-bold")
             }
-            link(label = "", url = "https://demo.rentality.xyz/guest") {
+            link(label = "", url = "$RENTALITY_DEMO_URL/guest") {
                 button(text = "Try Demo ●", className = "inline-flex items-center border px-5 ml-2.5 hover:text-black hover:bg-white rounded-full text-sm h-[40px] font-['Montserrat',Arial,sans-serif] font-bold")
             }
 
@@ -207,7 +208,7 @@ fun Container.menuMob() {
             }
         }
         link(label = "Join Waitlist", url = "https://docs.google.com/forms/d/e/1FAIpQLSdghhZVBqI0xVh8SA1F8O_BjDxuvQnP-sZ4LUR6TahysyOj4g/viewform", className = "font-['Montserrat',Arial,sans-serif]")
-        link(label = "Try Demo", url = "https://demo.rentality.xyz/guest", className = "font-['Montserrat',Arial,sans-serif]")
+        link(label = "Try Demo", url = "$RENTALITY_DEMO_URL/guest", className = "font-['Montserrat',Arial,sans-serif]")
     }
 }
 

@@ -10,3 +10,8 @@ const val HEADER_LINE_H = "80px"
 
 const val DATE_FORMAT_dd_mm_yyyy = "DD.MM.YYYY"
 const val DATE_FORMAT_yyyy_mm_dd = "YYYY-MM-DD"
+
+const val RENTALITY_APP_URL = "https://app.rentality.io"
+const val RENTALITY_DEMO_URL = "https://demo.rentality.io"
+
+const val RENTALITY_INFO_EMAIL = "info@rentality.io"
