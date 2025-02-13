@@ -8,7 +8,7 @@ plugins {
     id("io.kvision") version kvisionVersion
 }
 
-version = "1.57"
+version = "1.58"
 group = "com.eigenmethod"
 
 repositories {
