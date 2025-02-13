@@ -2,6 +2,7 @@ package com.eigenmethod.rentality.views.components
 
 import com.eigenmethod.rentality.constants.CONTAINER_PX
 import com.eigenmethod.rentality.constants.MAX_WITH_CONTENT
+import com.eigenmethod.rentality.constants.RENTALITY_INFO_EMAIL
 import com.eigenmethod.rentality.controllers.sendCommunityDataToGoogleTable
 import com.eigenmethod.rentality.css.cssInputFooter
 import com.eigenmethod.rentality.models.CommunityData
@@ -45,8 +46,8 @@ fun Container.footerInfoBlock() {
     div(className = "z-0 flex flex-col lg:pt-[40px] w-max h-full max-[560px]:mx-auto") {
         image(src = "/images/Logo_rentality.svg", className = "max-w-[180px] min-w-[180px] h-auto mb-2")
         div {
-            link("", url = "mailto:info@rentality.xyz", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
-                div("info@rentality.xyz")
+            link("", url = "mailto:$RENTALITY_INFO_EMAIL", className = "max-[560px]:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal") {
+                div(RENTALITY_INFO_EMAIL)
             }
             div(className = "flex flex-col mt-1.5 max-[560px]:items-center") {
                 div(className = "flex gap-5") {

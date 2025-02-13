@@ -1,9 +1,7 @@
 package com.eigenmethod.rentality.views
 
 import com.eigenmethod.rentality.AppScope
-import com.eigenmethod.rentality.constants.CONTAINER_PX
-import com.eigenmethod.rentality.constants.MAIN_COLOR_BG
-import com.eigenmethod.rentality.constants.MAX_WITH_CONTENT
+import com.eigenmethod.rentality.constants.*
 import com.eigenmethod.rentality.controllers.sendWagmi2025DataToGoogleTable
 import com.eigenmethod.rentality.models.ELegalMatters
 import com.eigenmethod.rentality.models.Wagmi2025Data
@@ -673,7 +671,7 @@ private fun Container.sectionRegisterAsHost() {
             br(className = "max-md:hidden")
             + "Less Effort?"
         }
-        link(label = "", url = "https://demo.rentality.xyz/host/profile", className = "max-md:w-full") {
+        link(label = "", url = "$RENTALITY_DEMO_URL/host/profile", className = "max-md:w-full") {
             button(text = "Register as a Host", className = "flex max-md:mt-6 mt-14 items-center justify-center bg-white rounded-full max-md:w-full md:w-[405px] h-[60px] text-xl text-[#6600CC] font-semibold active:opacity-75 active:scale-95 transition duration-150") {
                 image(src = "/images/tabler_arrow_right.svg", className = "ml-4")
             }
@@ -706,7 +704,7 @@ private fun Container.showDialogReserveShuttle() {
                     image(src = "/images/tabler_arrow_left.svg", className = "mr-4")
                     span("Return to home page")
                 }
-                link(label = "", url = "https://app.rentality.xyz/guest", className = "") {
+                link(label = "", url = "$RENTALITY_APP_URL/guest", className = "") {
                     button("Explore more", className = "p-2 bg-[#6600CC] w-full text-white text-base md:text-xl font-semibold rounded-full") {
                         onClick {
                             isDialogReserveShuttleVisible.value = false
@@ -782,10 +780,10 @@ private fun Container.footerInfoBlockWagmi() {
         div(className = "md:ml-auto") {
             link(
                 "",
-                url = "mailto:info@rentality.xyz",
+                url = "mailto:$RENTALITY_INFO_EMAIL",
                 className = "max-md:text-center pt-6 lg:pt-9 font-['Montserrat',Arial,sans-serif] text-base font-normal text-end"
             ) {
-                div("info@rentality.xyz")
+                div(RENTALITY_INFO_EMAIL)
             }
             div(className = "flex flex-col mt-1.5 max-md:items-center") {
                 div(className = "flex gap-5") {

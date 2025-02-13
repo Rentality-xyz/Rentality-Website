@@ -1,6 +1,7 @@
 package com.eigenmethod.rentality.views
 
 import com.eigenmethod.rentality.constants.HEADER_LINE_H
+import com.eigenmethod.rentality.constants.RENTALITY_APP_URL
 import com.eigenmethod.rentality.navigation_state.ConduitManager
 import com.eigenmethod.rentality.navigation_state.Pages
 import com.eigenmethod.rentality.views.components.imgMenu
@@ -68,13 +69,13 @@ fun Container.lifetimeRewardsPage() {
                 div(className = "w-full mt-12 xl:mt-14 bg-[#110D1C66] rounded-3xl backdrop-blur-lg text-white px-[35px] py-[30px]") {
                     p(content = "Register and Unlock Exclusive Benefits!", className = "text-[24px] xl:text-[26px] $min_full_design:text-[32px] font-semibold text-center w-full")
                     div(className = "flex max-xl:flex-col mt-6 w-full gap-3 xl:gap-5 text-base $min_full_design:text-xl font-medium") {
-                        link(label = "", url = "https://app.rentality.xyz/guest", className = "w-full h-[50px] $min_full_design:h-[62px]") {
+                        link(label = "", url = "$RENTALITY_APP_URL/guest", className = "w-full h-[50px] $min_full_design:h-[62px]") {
                             button(text = "", className= "bg-[url('/images/menumainbutton20.png')] bg-cover bg-no-repeat bg-center flex items-center justify-center px-4 w-full h-full rounded-full active:opacity-75 active:scale-95 transition duration-150") {
                                 + "Launch the App"
                                 image(src = "/images/ic_round-get-app.svg", className = "ml-4")
                             }
                         }
-                        link(label = "", url = "https://app.rentality.xyz/guest/profile", className = "w-full h-[50px] $min_full_design:h-[62px]") {
+                        link(label = "", url = "$RENTALITY_APP_URL/guest/profile", className = "w-full h-[50px] $min_full_design:h-[62px]") {
                             button(text = "", className= "bg-[url('/images/menumainbutton20.png')] bg-cover bg-no-repeat bg-center flex items-center justify-center px-4 w-full h-full rounded-full active:opacity-75 active:scale-95 transition duration-150") {
                                 + "Create profile"
                                 image(src = "/images/iconamoon_profile-fill.svg", className = "ml-4")
@@ -117,8 +118,8 @@ private fun Container.menuLifetimeRewards() {
         id = "menu-lifetime-rewards"
         div(className = "flex w-full items-center justify-between") {
             div(className = "flex") {
-                link(label = "Launch the App", url = "https://app.rentality.xyz/guest", className = "cursor-pointer block mr-6 hover:underline")
-                link(label = "Create profile", url = "https://app.rentality.xyz/guest/profile", className = "cursor-pointer block hover:underline")
+                link(label = "Launch the App", url = "$RENTALITY_APP_URL/guest", className = "cursor-pointer block mr-6 hover:underline")
+                link(label = "Create profile", url = "$RENTALITY_APP_URL/guest/profile", className = "cursor-pointer block hover:underline")
             }
             div(className = "flex") {
                 link("", url = "https://discord.gg/rentality") {
@@ -152,12 +153,12 @@ private fun Container.menuMobLifetimeRewards() {
                 }
             }
         }
-        link(label = "Launch the App", url = "https://app.rentality.xyz/guest") {
+        link(label = "Launch the App", url = "$RENTALITY_APP_URL/guest") {
             onEvent {
                 click = { hideMenuMobLifetimeRewards() }
             }
         }
-        link(label = "Create profile", url = "https://app.rentality.xyz/guest/profile") {
+        link(label = "Create profile", url = "$RENTALITY_APP_URL/guest/profile") {
             onEvent {
                 click = { hideMenuMobLifetimeRewards() }
             }

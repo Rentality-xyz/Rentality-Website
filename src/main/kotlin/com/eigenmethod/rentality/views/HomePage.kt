@@ -1,6 +1,7 @@
 package com.eigenmethod.rentality.views
 
 import com.eigenmethod.rentality.constants.CONTAINER_PX
+import com.eigenmethod.rentality.constants.RENTALITY_DEMO_URL
 import com.eigenmethod.rentality.constants.MAIN_COLOR_BG
 import com.eigenmethod.rentality.constants.MAX_WITH_CONTENT
 import com.eigenmethod.rentality.utilites.orZero
@@ -151,7 +152,7 @@ private fun Container.demoSection() {
                         br(className = "max-[450px]:hidden")
                         + "trying our demo."
                     }
-                    link(className = "absolute max-[550px]:pl-[50px] pl-[80px] max-[450px]:mt-[155px] mt-36", label = "", url = "https://demo.rentality.xyz/guest") {
+                    link(className = "absolute max-[550px]:pl-[50px] pl-[80px] max-[450px]:mt-[155px] mt-36", label = "", url = "$RENTALITY_DEMO_URL/guest") {
                         button(text = "", className = "inline-flex items-center border-gradient px-5 rounded-[10px] text-sm h-10 font-['Montserrat',Arial,sans-serif] font-bold") {
                             + "Try Demo"
                             span(content = "●", className = "text-[#7F5EE7] ml-3 mb-0.5")
