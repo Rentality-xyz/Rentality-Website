@@ -1,0 +1,28 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [
+      {
+        "source": "/legalmatters/",
+        "destination": "/404.html"
+      },
+      {
+        "regex": "/legalmatters(|/(terms|cancellation|prohibiteduses|privacy))",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/triprules",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/wagmi-2025",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/lifetime-rewards",
+        "destination": "/index.html"
+      }
+    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+  }
+}
