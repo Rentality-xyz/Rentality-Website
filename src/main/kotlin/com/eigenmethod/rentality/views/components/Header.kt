@@ -215,7 +215,7 @@ private fun Container.buttonToPrototype() {
                 span(content = "→", className = "text-[#7F5EE7] ml-3 mb-0.5")
             }
         }
-        link(label = "", url = "$RENTALITY_APP_URL/host") {
+        link(label = "", url = "$RENTALITY_APP_URL/host/become_host") {
             button(text = "", className= "border-gradient items-center px-2 w-[240px] h-[50px] rounded-[10px] text-xl font-['Montserrat',Arial,sans-serif] font-semibold max-xl:mt-4") {
                 + "Become a Host"
                 span(content = "→", className = "text-[#7F5EE7] ml-3 mb-0.5")
