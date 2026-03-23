@@ -1,19 +1,6 @@
 {
   "hosting": {
     "public": "build/distributions",
-    "redirects": [
-      {
-        "source": "/:path*",
-        "has": [
-          {
-            "type": "host",
-            "value": "www.rentality.io"
-          }
-        ],
-        "destination": "https://rentality.io/:path*",
-        "type": 301
-      }
-    ],
     "rewrites": [
       {
         "source": "/legalmatters/",
@@ -33,10 +20,6 @@
       },
       {
         "source": "/lifetime-rewards",
-        "destination": "/index.html"
-      },
-      {
-        "source": "**",
         "destination": "/index.html"
       }
     ],
